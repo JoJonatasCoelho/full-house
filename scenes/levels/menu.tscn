@@ -1,17 +1,84 @@
-[gd_scene load_steps=4 format=3 uid="uid://cx3v1bl5jbxun"]
+[gd_scene load_steps=3 format=3 uid="uid://cx3v1bl5jbxun"]
 
-[ext_resource type="Script" uid="uid://b4jv0s7ikhf34" path="res://scripts/systems/card_manager.gd" id="1_g3w80"]
-[ext_resource type="PackedScene" uid="uid://cjbvxhqravwt" path="res://scenes/interactables/card.tscn" id="2_k3l6u"]
-[ext_resource type="PackedScene" uid="uid://dj4lndye1v6t8" path="res://scenes/hud/card_slot.tscn" id="3_tmk6g"]
+[ext_resource type="Script" uid="uid://cl6mctx7sj5s4" path="res://scripts/systems/hud/menu.gd" id="1_k3l6u"]
+[ext_resource type="Texture2D" uid="uid://di40edtwfgj74" path="res://assets/maxresdefault.jpg" id="2_tmk6g"]
 
-[node name="Menu" type="Node2D"]
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k3l6u")
 
-[node name="CardManager" type="Node2D" parent="."]
-script = ExtResource("1_g3w80")
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+offset_right = 1152.0
+offset_bottom = 720.0
+texture = ExtResource("2_tmk6g")
 
-[node name="Card" parent="CardManager" instance=ExtResource("2_k3l6u")]
+[node name="MenuContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.5
+offset_top = -81.5
+offset_right = 59.5
+offset_bottom = 81.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
 
-[node name="Card2" parent="CardManager" instance=ExtResource("2_k3l6u")]
+[node name="Label" type="Label" parent="MenuContainer"]
+layout_mode = 2
+text = "Full House"
 
-[node name="CardSlot" parent="CardManager" instance=ExtResource("3_tmk6g")]
-position = Vector2(239, 259)
+[node name="PlayButton" type="Button" parent="MenuContainer"]
+layout_mode = 2
+text = "Jogar"
+
+[node name="SettingsButton" type="Button" parent="MenuContainer"]
+layout_mode = 2
+text = "Configurações"
+
+[node name="CreditsButton" type="Button" parent="MenuContainer"]
+layout_mode = 2
+text = "Créditos"
+
+[node name="QuitButton" type="Button" parent="MenuContainer"]
+layout_mode = 2
+text = "Sair"
+
+[node name="SettingsContainer" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FullscreenCheckBox" type="CheckBox" parent="SettingsContainer"]
+layout_mode = 2
+text = "Modo tela cheia"
+
+[node name="BackButton" type="Button" parent="SettingsContainer"]
+layout_mode = 2
+text = "Voltar"
+
+[connection signal="pressed" from="MenuContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MenuContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MenuContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="MenuContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="toggled" from="SettingsContainer/FullscreenCheckBox" to="." method="_on_fullscreen_check_box_toggled"]
+[connection signal="pressed" from="SettingsContainer/BackButton" to="." method="_on_back_button_pressed"]
