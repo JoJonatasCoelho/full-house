@@ -11,7 +11,7 @@ class_name DutchManager
 
 func _ready() -> void:
 	battle_time.one_shot = true
-	battle_time.wait_time = 1.0
+	battle_time.wait_time = 1
 
 func _on_end_turn_pressed() -> void:
 	opponent_turn()

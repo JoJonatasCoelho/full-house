@@ -10,8 +10,6 @@ class_name CardManager
 const CARD_COLLISION_MASK: int = 1
 const SLOT_COLLISION_MASK: int = 2
 
-const DEFAULT_CARD_SPEED: float = 0.5
-
 const CARD_SIZE: float = 1.3
 const HIGHLIGHTED_CARD_SIZE: float = 1.5
 
@@ -109,7 +107,7 @@ func finish_drag() -> void:
 		card_being_dragged.get_node("AnimationPlayer").play("flip_card_up")
 		highlight_card(card_being_dragged, false)
 	else:
-		hand_reference.add_card_to_hand(card_being_dragged, DEFAULT_CARD_SPEED)
+		hand_reference.add_card_to_hand(card_being_dragged, Global.DEFAULT_CARD_SPEED)
 	card_being_dragged = null
 	
 func place_opponent_card(card: Card) -> void:
@@ -118,10 +116,9 @@ func place_opponent_card(card: Card) -> void:
 		card_slot.get_node("Sprite2D").texture = card_slot.card_in_slot.get_node("CardFront").texture
 		card_slot.card_in_slot.queue_free()
 	opponent_hand_reference.remove_card_from_hand(card)
-	var tween = get_tree().create_tween()
-	tween.tween_property(card, "position", card_slot.position, 1)
-	card.get_node("AnimationPlayer").play("flip_card_up")
 	card.position = card_slot.position
+	Global.animate_card_to_position(card, card_slot.position, Global.DEFAULT_CARD_SPEED)
+	card.get_node("AnimationPlayer").play("flip_card_up")
 	card_slot.card_in_slot = card 
 	card.is_in_card_slot = true
 	highlight_card(card, false)

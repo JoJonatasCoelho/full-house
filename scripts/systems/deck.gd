@@ -3,7 +3,6 @@ extends Node
 class_name Deck
 
 const CARD_SCENE_PATH: String = "res://scenes/interactables/card.tscn"
-const CARD_DRAW_SPEED: float = 0.5
 const INITIAL_HAND_SIZE: int = 4
 
 var drawn_this_turn: bool = false
@@ -18,7 +17,7 @@ func _ready() -> void:
 		draw_card(true)
 		drawn_this_turn = false
 	drawn_this_turn = true
-	print("tamanho do deeck:",  deck.size())
+	
 		
 func generate_standard_deck():
 	deck.clear()
@@ -50,9 +49,9 @@ func draw_card(opponent_turn: bool):
 	new_card.suit = card_drawn.suit
 	$"../CardManager".add_child(new_card)
 	if not opponent_turn:
-		$"../PlayerHand".add_card_to_hand(new_card, CARD_DRAW_SPEED)
+		$"../PlayerHand".add_card_to_hand(new_card, Global.DEFAULT_CARD_SPEED)
 	else:
 		var opponent_card_area: Area2D = new_card.get_node("Area2D")
 		new_card.remove_child(opponent_card_area)
-		$"../OpponentHand".add_card_to_hand(new_card, CARD_DRAW_SPEED)
+		$"../OpponentHand".add_card_to_hand(new_card, Global.DEFAULT_CARD_SPEED)
 	
