@@ -5,6 +5,7 @@ class_name Card
 signal hovered
 signal hovered_off
 
+var is_in_card_slot: bool = false
 var starting_position: Vector2
 
 @export var suit: CardEnum.Suit

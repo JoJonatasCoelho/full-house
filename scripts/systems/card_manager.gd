@@ -38,14 +38,14 @@ func highlight_card(card: Card, hovered: bool):
 		card.z_index = 1
 	
 func on_hovered_over_card(card: Card):
-	if !is_hovering_a_card:
+	if !is_hovering_a_card and not card.is_in_card_slot:
 		is_hovering_a_card = true
 		highlight_card(card, true)
 	
 func on_hovered_off_card(card: Card):
 	highlight_card(card, false)
-	var new_card_hovered = raycast_check_for_card()
-	if new_card_hovered:
+	var new_card_hovered: Card = raycast_check_for_card()
+	if new_card_hovered and not new_card_hovered.is_in_card_slot:
 		highlight_card(new_card_hovered, true)
 	else:
 		is_hovering_a_card = false
@@ -83,11 +83,12 @@ func get_card_with_highest_z_index(cards):
 	return highest_z_card
 	
 func start_drag(card: Card):
-	card_being_dragged = card
-	card.scale = Vector2(CARD_SIZE, CARD_SIZE)
-	var card_slot_found = raycast_check_for_card_slot()
-	if card_slot_found:
-		card_slot_found.card_in_slot = null
+	if not card.is_in_card_slot:
+		card_being_dragged = card
+		card.scale = Vector2(HIGHLIGHTED_CARD_SIZE, HIGHLIGHTED_CARD_SIZE)
+		var card_slot_found = raycast_check_for_card_slot()
+		if card_slot_found:
+			card_slot_found.card_in_slot = null
 	
 func finish_drag():
 	card_being_dragged.scale = Vector2(HIGHLIGHTED_CARD_SIZE, HIGHLIGHTED_CARD_SIZE)
@@ -96,6 +97,8 @@ func finish_drag():
 		hand_reference.remove_card_from_hand(card_being_dragged)
 		card_being_dragged.position = card_slot_found.position
 		card_slot_found.card_in_slot = card_being_dragged 
+		card_being_dragged.is_in_card_slot = true
+		highlight_card(card_being_dragged, false)
 	else:
 		hand_reference.add_card_to_hand(card_being_dragged, DEFAULT_CARD_SPEED)
 	card_being_dragged = null

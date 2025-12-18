@@ -4,12 +4,17 @@ class_name Deck
 
 const CARD_SCENE_PATH: String = "res://scenes/interactables/card.tscn"
 const CARD_DRAW_SPEED: float = 0.5
+const INITIAL_HAND_SIZE: int = 4
 
+var drawn_this_turn: bool = false
 var deck: Array[Card] = []
 
 func _ready() -> void:
 	generate_standard_deck()
 	shuffle_deck()
+	for i in range(INITIAL_HAND_SIZE):
+		draw_card()
+		drawn_this_turn = false
 	
 func generate_standard_deck():
 	deck.clear()
@@ -24,6 +29,9 @@ func  shuffle_deck():
 	deck.shuffle()
 
 func draw_card():
+	if drawn_this_turn:
+		return
+	drawn_this_turn = true
 	var card_drawn = deck[0]
 	deck.erase(card_drawn)
 	if deck.size() == 0:
