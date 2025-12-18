@@ -39,7 +39,7 @@ func calculate_card_position(idx: int):
 func recalculate_hand_sum():
 	hand_sum = 0
 	for card in hand:
-		hand_sum+=card.value
+		hand_sum+=card.rank
 		
 func animate_card_to_position(card: Card, new_position: Vector2, speed):
 	var tween = get_tree().create_tween()

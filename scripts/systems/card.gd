@@ -7,9 +7,11 @@ signal hovered_off
 
 var starting_position: Vector2
 
-var suit = CardEnum.Suits.Hearts
-var type = CardEnum.Types.Number
-var value:int = 1
+@export var suit: CardEnum.Suit
+@export var rank: CardEnum.Rank
+
+func get_id() -> String:
+	return str(CardEnum.Rank.keys()[rank - 1]) + "_of_" + str(CardEnum.Suit.keys()[suit])
 
 func _ready() -> void:
 	var manager: CardManager =  get_parent()

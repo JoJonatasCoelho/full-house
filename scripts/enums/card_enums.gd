@@ -2,5 +2,6 @@ extends Node
 
 class_name CardEnum
 
-enum Types {Number, Jack, Queen, King, Ace}
-enum Suits {Hearts, Diamonds, Clubs, Spades}
+enum Rank {ACE = 1, TWO = 2, THREE = 3, FOUR = 4, FIVE = 5, SIX = 6, SEVEN = 7, EIGHT = 8, NINE = 9, TEN = 10, 
+	JACK = 11, QUEEN = 12, KING = 13}
+enum Suit {HEARTS, DIAMONDS, CLUBS, SPADES}
