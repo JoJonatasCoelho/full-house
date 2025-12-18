@@ -3,7 +3,8 @@ extends Node2D
 class_name CardManager
 
 @onready var screen_size = get_viewport_rect().size
-@onready var hand_reference = $"../PlayerHand"
+@onready var hand_reference: Hand = $"../PlayerHand"
+@onready var opponent_hand_reference: OpponentHand = $"../OpponentHand"
 @onready var deck_reference = $"../Deck"
 
 const CARD_COLLISION_MASK: int = 1
@@ -93,7 +94,7 @@ func start_drag(card: Card):
 		if card_slot_found:
 			card_slot_found.card_in_slot = null
 	
-func finish_drag():
+func finish_drag() -> void:
 	card_being_dragged.scale = Vector2(HIGHLIGHTED_CARD_SIZE, HIGHLIGHTED_CARD_SIZE)
 	var card_slot_found: CardSlot = raycast_check_for_card_slot()
 	if card_slot_found:
@@ -110,6 +111,20 @@ func finish_drag():
 	else:
 		hand_reference.add_card_to_hand(card_being_dragged, DEFAULT_CARD_SPEED)
 	card_being_dragged = null
+	
+func place_opponent_card(card: Card) -> void:
+	var card_slot: CardSlot = $"../CardSlot"
+	if card_slot.card_in_slot:
+		card_slot.get_node("Sprite2D").texture = card_slot.card_in_slot.get_node("CardFront").texture
+		card_slot.card_in_slot.queue_free()
+	opponent_hand_reference.remove_card_from_hand(card)
+	var tween = get_tree().create_tween()
+	tween.tween_property(card, "position", card_slot.position, 1)
+	card.get_node("AnimationPlayer").play("flip_card_up")
+	card.position = card_slot.position
+	card_slot.card_in_slot = card 
+	card.is_in_card_slot = true
+	highlight_card(card, false)
 
 func on_left_click_released():
 	if card_being_dragged:

@@ -13,9 +13,12 @@ func _ready() -> void:
 	generate_standard_deck()
 	shuffle_deck()
 	for i in range(INITIAL_HAND_SIZE):
-		draw_card()
+		draw_card(false)
+		drawn_this_turn = false
+		draw_card(true)
 		drawn_this_turn = false
 	drawn_this_turn = true
+	print("tamanho do deeck:",  deck.size())
 		
 func generate_standard_deck():
 	deck.clear()
@@ -29,8 +32,8 @@ func generate_standard_deck():
 func  shuffle_deck():
 	deck.shuffle()
 
-func draw_card():
-	if drawn_this_turn:
+func draw_card(opponent_turn: bool):
+	if drawn_this_turn and !opponent_turn:
 		return
 	drawn_this_turn = true
 	var card_drawn = deck[0]
@@ -46,4 +49,10 @@ func draw_card():
 	new_card.rank = card_drawn.rank
 	new_card.suit = card_drawn.suit
 	$"../CardManager".add_child(new_card)
-	$"../PlayerHand".add_card_to_hand(new_card, CARD_DRAW_SPEED)
+	if not opponent_turn:
+		$"../PlayerHand".add_card_to_hand(new_card, CARD_DRAW_SPEED)
+	else:
+		var opponent_card_area: Area2D = new_card.get_node("Area2D")
+		new_card.remove_child(opponent_card_area)
+		$"../OpponentHand".add_card_to_hand(new_card, CARD_DRAW_SPEED)
+	

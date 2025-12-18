@@ -1,13 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://u8prst1obv1v"]
+[gd_scene load_steps=9 format=3 uid="uid://u8prst1obv1v"]
 
+[ext_resource type="Script" uid="uid://p5wjkjbu34jw" path="res://scripts/systems/dutch_manager.gd" id="1_06sp8"]
 [ext_resource type="Script" uid="uid://b4jv0s7ikhf34" path="res://scripts/systems/card_manager.gd" id="1_bfhv8"]
-[ext_resource type="Script" uid="uid://cor3u0y20fs32" path="res://scripts/systems/hand.gd" id="3_ad8uc"]
+[ext_resource type="PackedScene" uid="uid://bba86c5flxe07" path="res://scenes/systems/player_hand.tscn" id="2_06sp8"]
 [ext_resource type="PackedScene" uid="uid://dj4lndye1v6t8" path="res://scenes/hud/card_slot.tscn" id="3_kljt5"]
-[ext_resource type="PackedScene" uid="uid://biux6ecqebopw" path="res://scenes/hud/deck.tscn" id="4_nd4bu"]
+[ext_resource type="PackedScene" path="res://scenes/hud/deck.tscn" id="4_nd4bu"]
 [ext_resource type="Texture2D" uid="uid://dc82fetg0quuw" path="res://assets/turn_button.png" id="6_06sp8"]
 [ext_resource type="Script" uid="uid://coendf2brak0u" path="res://scripts/systems/input_manager.gd" id="6_joecx"]
+[ext_resource type="Script" uid="uid://ct0v62m8poum5" path="res://scripts/systems/opponent_hand.gd" id="8_ej02d"]
 
 [node name="TestScene" type="Node2D"]
+script = ExtResource("1_06sp8")
+
+[node name="PlayerHand" parent="." instance=ExtResource("2_06sp8")]
 
 [node name="InputManager" type="Node2D" parent="."]
 script = ExtResource("6_joecx")
@@ -18,8 +23,8 @@ script = ExtResource("1_bfhv8")
 [node name="CardSlot" parent="." instance=ExtResource("3_kljt5")]
 position = Vector2(655, 326)
 
-[node name="PlayerHand" type="Node2D" parent="."]
-script = ExtResource("3_ad8uc")
+[node name="OpponentHand" parent="." instance=ExtResource("2_06sp8")]
+script = ExtResource("8_ej02d")
 
 [node name="Deck" parent="." instance=ExtResource("4_nd4bu")]
 
@@ -29,3 +34,7 @@ offset_top = 215.0
 offset_right = 261.0
 offset_bottom = 284.0
 icon = ExtResource("6_06sp8")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="pressed" from="EndTurn" to="." method="_on_end_turn_pressed"]

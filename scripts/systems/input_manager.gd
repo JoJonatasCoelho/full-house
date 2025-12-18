@@ -30,4 +30,4 @@ func raycast_at_cursor():
 			if card_found:
 				card_manager_reference.start_drag(card_found)
 		elif result_collision_mask == DECK_COLLISION_MASK:
-			deck_reference.draw_card()
+			deck_reference.draw_card(false)
