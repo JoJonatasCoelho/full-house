@@ -1,0 +1,40 @@
+[gd_scene load_steps=9 format=3 uid="uid://br3lcba4sx0j3"]
+
+[ext_resource type="Script" uid="uid://clavr38yjqwsp" path="res://scripts/systems/save_scene.gd" id="1_emy0s"]
+[ext_resource type="Script" uid="uid://coendf2brak0u" path="res://scripts/systems/input_manager.gd" id="2_a808s"]
+[ext_resource type="PackedScene" uid="uid://bba86c5flxe07" path="res://scenes/systems/player_hand.tscn" id="2_navqj"]
+[ext_resource type="Script" uid="uid://b4jv0s7ikhf34" path="res://scripts/systems/card_manager.gd" id="3_navqj"]
+[ext_resource type="PackedScene" uid="uid://dj4lndye1v6t8" path="res://scenes/hud/card_slot.tscn" id="4_3rfdx"]
+[ext_resource type="Script" path="res://scripts/systems/opponent_hand.gd" id="6_3rfdx"]
+[ext_resource type="PackedScene" uid="uid://biux6ecqebopw" path="res://scenes/hud/deck.tscn" id="6_ulo02"]
+[ext_resource type="Texture2D" uid="uid://dc82fetg0quuw" path="res://assets/turn_button.png" id="7_oyu6q"]
+
+[node name="SaveTestScene" type="Node2D"]
+script = ExtResource("1_emy0s")
+
+[node name="PlayerHand" parent="." instance=ExtResource("2_navqj")]
+
+[node name="InputManager" type="Node2D" parent="."]
+script = ExtResource("2_a808s")
+
+[node name="CardManager" type="Node2D" parent="."]
+script = ExtResource("3_navqj")
+
+[node name="CardSlot" parent="." instance=ExtResource("4_3rfdx")]
+position = Vector2(655, 326)
+
+[node name="OpponentHand" parent="." instance=ExtResource("2_navqj")]
+script = ExtResource("6_3rfdx")
+
+[node name="Deck" parent="." instance=ExtResource("6_ulo02")]
+position = Vector2(1123, 365)
+
+[node name="EndTurn" type="Button" parent="."]
+offset_left = 1060.0
+offset_top = 210.0
+offset_right = 1184.0
+offset_bottom = 279.0
+icon = ExtResource("7_oyu6q")
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="."]

@@ -20,8 +20,9 @@ func _on_play_button_pressed() -> void:
 
 
 func _on_settings_button_pressed() -> void:
-	menu_container.visible = false
-	settings_container.visible = true
+	SaveManager._load()
+	SaveManager.current_scene = SaveManager.save_data.current_scene
+	get_tree().change_scene_to_file(SaveManager.current_scene)
 
 
 func _on_credits_button_pressed() -> void:
