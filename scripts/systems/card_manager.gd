@@ -9,8 +9,14 @@ class_name CardManager
 
 const CARD_COLLISION_MASK: int = 1
 const SLOT_COLLISION_MASK: int = 2
+
+const DEFAULT_CARD_SPEED: float = 0.5
+
 const CARD_SIZE: float = 1.3
 const HIGHLIGHTED_CARD_SIZE: float = 1.5
+
+func _ready() -> void:
+	$"../InputManager".connect("left_mouse_released", on_left_click_released)
 
 func _process(delta: float) -> void:
 	if card_being_dragged:
@@ -18,7 +24,6 @@ func _process(delta: float) -> void:
 		card_being_dragged.position = mouse_pos
 		card_being_dragged.position = Vector2(clamp(mouse_pos.x, 0, screen_size.x), 
 											  clamp(mouse_pos.y, 0, screen_size.y))
-		
 
 func connect_card_signals(card: Card):
 	card.connect("hovered", on_hovered_over_card)
@@ -32,7 +37,6 @@ func highlight_card(card: Card, hovered: bool):
 		card.scale = Vector2(CARD_SIZE, CARD_SIZE)
 		card.z_index = 1
 	
-	
 func on_hovered_over_card(card: Card):
 	if !is_hovering_a_card:
 		is_hovering_a_card = true
@@ -45,16 +49,6 @@ func on_hovered_off_card(card: Card):
 		highlight_card(new_card_hovered, true)
 	else:
 		is_hovering_a_card = false
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index  == MOUSE_BUTTON_LEFT:
-		if event.is_pressed():
-			var card = raycast_check_for_card()
-			if card:
-				start_drag(card)
-		else:
-			if card_being_dragged:
-				finish_drag() 
 
 func raycast_check_for_card():
 	var space_state = get_world_2d().direct_space_state
@@ -103,5 +97,9 @@ func finish_drag():
 		card_being_dragged.position = card_slot_found.position
 		card_slot_found.card_in_slot = card_being_dragged 
 	else:
-		hand_reference.add_card_to_hand(card_being_dragged)
+		hand_reference.add_card_to_hand(card_being_dragged, DEFAULT_CARD_SPEED)
 	card_being_dragged = null
+
+func on_left_click_released():
+	if card_being_dragged:
+		finish_drag()
