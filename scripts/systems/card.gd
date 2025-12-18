@@ -5,6 +5,8 @@ class_name Card
 signal hovered
 signal hovered_off
 
+var starting_position: Vector2
+
 var suit = CardEnum.Suits.Hearts
 var type = CardEnum.Types.Number
 var value:int = 1

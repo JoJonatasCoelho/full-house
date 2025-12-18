@@ -5,9 +5,12 @@ class_name CardManager
 @onready var card_being_dragged : Card
 @onready var is_hovering_a_card: bool = false
 @onready var screen_size = get_viewport_rect().size
+@onready var hand_reference = $"../PlayerHand"
 
-@onready var CARD_COLLISION_MASK: int = 1
-@onready var SLOT_COLLISION_MASK: int = 2
+const CARD_COLLISION_MASK: int = 1
+const SLOT_COLLISION_MASK: int = 2
+const CARD_SIZE: float = 1.3
+const HIGHLIGHTED_CARD_SIZE: float = 1.5
 
 func _process(delta: float) -> void:
 	if card_being_dragged:
@@ -23,10 +26,10 @@ func connect_card_signals(card: Card):
 	
 func highlight_card(card: Card, hovered: bool):
 	if hovered:
-		card.scale = Vector2(1.2, 1.2)
+		card.scale = Vector2(HIGHLIGHTED_CARD_SIZE, HIGHLIGHTED_CARD_SIZE)
 		card.z_index = 2
 	else:
-		card.scale = Vector2(1, 1)
+		card.scale = Vector2(CARD_SIZE, CARD_SIZE)
 		card.z_index = 1
 	
 	
@@ -87,16 +90,18 @@ func get_card_with_highest_z_index(cards):
 	
 func start_drag(card: Card):
 	card_being_dragged = card
-	card.scale = Vector2(1, 1)
+	card.scale = Vector2(CARD_SIZE, CARD_SIZE)
 	var card_slot_found = raycast_check_for_card_slot()
 	if card_slot_found:
-		card_slot_found.card_in_slot = false
+		card_slot_found.card_in_slot = null
 	
-
 func finish_drag():
-	card_being_dragged.scale = Vector2(1.2, 1.2)
+	card_being_dragged.scale = Vector2(HIGHLIGHTED_CARD_SIZE, HIGHLIGHTED_CARD_SIZE)
 	var card_slot_found = raycast_check_for_card_slot()
 	if card_slot_found and not card_slot_found.card_in_slot:
+		hand_reference.remove_card_from_hand(card_being_dragged)
 		card_being_dragged.position = card_slot_found.position
-		card_slot_found.card_in_slot = true 
+		card_slot_found.card_in_slot = card_being_dragged 
+	else:
+		hand_reference.add_card_to_hand(card_being_dragged)
 	card_being_dragged = null
