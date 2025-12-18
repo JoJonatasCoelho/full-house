@@ -30,8 +30,11 @@ func draw_card():
 		$Area2D/CollisionShape2D.disabled = true
 		$Sprite2D.visible = false
 	var card_scene = preload(CARD_SCENE_PATH)
-	var new_card = card_scene.instantiate()
+	var new_card: Card = card_scene.instantiate()
+	var card_image_path = str("res://assets/cards/"+card_drawn.get_id()+".png")
+	new_card.get_node("Sprite2D").texture = load(card_image_path)
+	new_card.name = card_drawn.get_id()
+	new_card.rank = card_drawn.rank
+	new_card.suit = card_drawn.suit
 	$"../CardManager".add_child(new_card)
-	new_card.name = "Card"
 	$"../PlayerHand".add_card_to_hand(new_card, CARD_DRAW_SPEED)
-	print(card_drawn.get_id())

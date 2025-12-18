@@ -23,6 +23,7 @@ func remove_card_from_hand(card: Card):
 	if card in hand:
 		hand.erase(card)
 		update_hand_positions(DEFAULT_CARD_SPEED)
+		recalculate_hand_sum()
 
 func update_hand_positions(speed):
 	for i in range(hand.size()):
@@ -39,7 +40,11 @@ func calculate_card_position(idx: int):
 func recalculate_hand_sum():
 	hand_sum = 0
 	for card in hand:
-		hand_sum+=card.rank
+		if card.rank == CardEnum.Rank.KING and \
+				(card.suit == CardEnum.Suit.CLUBS or card.suit == CardEnum.Suit.SPADES):
+			hand_sum += 0
+		else: hand_sum += 10 if card.rank > 10 else card.rank
+	print(hand_sum)
 		
 func animate_card_to_position(card: Card, new_position: Vector2, speed):
 	var tween = get_tree().create_tween()

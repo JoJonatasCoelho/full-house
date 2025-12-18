@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://b4jv0s7ikhf34" path="res://scripts/systems/card_manager.gd" id="1_bfhv8"]
 [ext_resource type="Script" uid="uid://cor3u0y20fs32" path="res://scripts/systems/hand.gd" id="3_ad8uc"]
 [ext_resource type="PackedScene" uid="uid://dj4lndye1v6t8" path="res://scenes/hud/card_slot.tscn" id="3_kljt5"]
-[ext_resource type="PackedScene" path="res://scenes/hud/deck.tscn" id="4_nd4bu"]
-[ext_resource type="Script" path="res://scripts/systems/input_manager.gd" id="6_joecx"]
+[ext_resource type="PackedScene" uid="uid://biux6ecqebopw" path="res://scenes/hud/deck.tscn" id="4_nd4bu"]
+[ext_resource type="Script" uid="uid://coendf2brak0u" path="res://scripts/systems/input_manager.gd" id="6_joecx"]
 
 [node name="TestScene" type="Node2D"]
 
