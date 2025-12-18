@@ -33,7 +33,7 @@ func update_hand_positions(speed):
 		animate_card_to_position(card, new_position, speed)
 		
 func calculate_card_position(idx: int):
-	var total_width = (hand.size()) * card_width
+	var total_width = (hand.size() - 1) * card_width
 	var x_offset = center_screen_x + idx * card_width - total_width / 2
 	return x_offset
 	
@@ -44,7 +44,7 @@ func recalculate_hand_sum():
 				(card.suit == CardEnum.Suit.CLUBS or card.suit == CardEnum.Suit.SPADES):
 			hand_sum += 0
 		else: hand_sum += 10 if card.rank > 10 else card.rank
-	print(hand_sum)
+	#print(hand_sum)
 		
 func animate_card_to_position(card: Card, new_position: Vector2, speed):
 	var tween = get_tree().create_tween()

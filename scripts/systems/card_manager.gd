@@ -2,10 +2,9 @@ extends Node2D
 
 class_name CardManager
 
-@onready var card_being_dragged : Card
-@onready var is_hovering_a_card: bool = false
 @onready var screen_size = get_viewport_rect().size
 @onready var hand_reference = $"../PlayerHand"
+@onready var deck_reference = $"../Deck"
 
 const CARD_COLLISION_MASK: int = 1
 const SLOT_COLLISION_MASK: int = 2
@@ -14,6 +13,10 @@ const DEFAULT_CARD_SPEED: float = 0.5
 
 const CARD_SIZE: float = 1.3
 const HIGHLIGHTED_CARD_SIZE: float = 1.5
+
+var card_being_dragged : Card
+var is_hovering_a_card: bool = false
+var played_this_turn: bool = false
 
 func _ready() -> void:
 	$"../InputManager".connect("left_mouse_released", on_left_click_released)
@@ -92,12 +95,17 @@ func start_drag(card: Card):
 	
 func finish_drag():
 	card_being_dragged.scale = Vector2(HIGHLIGHTED_CARD_SIZE, HIGHLIGHTED_CARD_SIZE)
-	var card_slot_found = raycast_check_for_card_slot()
-	if card_slot_found and not card_slot_found.card_in_slot:
+	var card_slot_found: CardSlot = raycast_check_for_card_slot()
+	if card_slot_found:
+		if card_slot_found.card_in_slot:
+			card_slot_found.get_node("Sprite2D").texture = \
+					card_slot_found.card_in_slot.get_node("CardFront").texture
+			card_slot_found.card_in_slot.queue_free()
 		hand_reference.remove_card_from_hand(card_being_dragged)
 		card_being_dragged.position = card_slot_found.position
 		card_slot_found.card_in_slot = card_being_dragged 
 		card_being_dragged.is_in_card_slot = true
+		card_being_dragged.get_node("AnimationPlayer").play("flip_card_up")
 		highlight_card(card_being_dragged, false)
 	else:
 		hand_reference.add_card_to_hand(card_being_dragged, DEFAULT_CARD_SPEED)

@@ -18,10 +18,10 @@ script = ExtResource("1_bfhv8")
 [node name="CardSlot" parent="." instance=ExtResource("3_kljt5")]
 position = Vector2(655, 326)
 
-[node name="Deck" parent="." instance=ExtResource("4_nd4bu")]
-
 [node name="PlayerHand" type="Node2D" parent="."]
 script = ExtResource("3_ad8uc")
+
+[node name="Deck" parent="." instance=ExtResource("4_nd4bu")]
 
 [node name="EndTurn" type="Button" parent="."]
 offset_left = 137.0

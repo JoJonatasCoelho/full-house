@@ -15,7 +15,8 @@ func _ready() -> void:
 	for i in range(INITIAL_HAND_SIZE):
 		draw_card()
 		drawn_this_turn = false
-	
+	drawn_this_turn = true
+		
 func generate_standard_deck():
 	deck.clear()
 	for s in CardEnum.Suit.values():
@@ -40,7 +41,7 @@ func draw_card():
 	var card_scene = preload(CARD_SCENE_PATH)
 	var new_card: Card = card_scene.instantiate()
 	var card_image_path = str("res://assets/cards/"+card_drawn.get_id()+".png")
-	new_card.get_node("Sprite2D").texture = load(card_image_path)
+	new_card.get_node("CardFront").texture = load(card_image_path)
 	new_card.name = card_drawn.get_id()
 	new_card.rank = card_drawn.rank
 	new_card.suit = card_drawn.suit
