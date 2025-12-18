@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="Full house"
+run/main_scene="uid://u8prst1obv1v"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [dotnet]
 
 project/assembly_name="Full house"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
