@@ -13,7 +13,7 @@
 ## 🧩 Sobre o jogo
 **Full House** é um jogo narrativo desenvolvido durante uma *game jam* com o tema **"Racismo na Escola"**.
 
-Após o desaparecimento da humanidade, a escola se torna um dos últimos espaços de convivência entre diferentes raças. Com a chegada de um novo diretor, mudanças graduais passam a restringir costumes e espaços sob discursos de ordem, tradição e progresso. Nenhuma raça é mencionada diretamente, nenhuma regra é anunciada de forma explícita — ainda assim, práticas culturais passam a ser desencorajadas e certos espaços deixam de estar abertos a todos.
+Após o desaparecimento da humanidade, a escola se torna um dos últimos espaços de convivência entre diferentes raças. Com a chegada de um novo diretor, mudanças graduais passam a restringir costumes e espaços sob discursos de ordem, tradição e progresso.
 
 Em resposta, nasce a **Diabo Bets**, um grupo fundado por estudantes marginalizados que transforma o estigma em identidade e resistência. O que começa como um refúgio cresce e se torna símbolo de insubordinação cultural dentro da escola, onde culturas silenciadas encontram abrigo, expressão e força coletiva.
 
