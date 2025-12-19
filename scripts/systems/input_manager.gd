@@ -30,4 +30,5 @@ func raycast_at_cursor():
 			if card_found:
 				card_manager_reference.start_drag(card_found)
 		elif result_collision_mask == DECK_COLLISION_MASK:
-			deck_reference.draw_card(false)
+			if Global.turn == TurnType.TurnType.PLAYER and not Global.drawn_this_turn:
+				deck_reference.draw_card(false)

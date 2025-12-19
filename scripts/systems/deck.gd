@@ -15,7 +15,7 @@ func _ready() -> void:
 		Global.reset_drawn_this_turn()
 		draw_card(true)
 		Global.reset_drawn_this_turn()
-	Global.set_drawn_this_turn()
+	Global.reset_drawn_this_turn()
 	
 func generate_standard_deck():
 	deck.clear()

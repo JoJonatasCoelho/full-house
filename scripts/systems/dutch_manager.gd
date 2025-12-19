@@ -26,7 +26,9 @@ func opponent_turn() -> void:
 	opponent_decision()
 	battle_time.start()
 	await battle_time.timeout
-	$CardManager.place_opponent_card(oppnent_hand.hand[randi_range(0, 4)])
+	if oppnent_hand.hand.size() > 0:
+		var card_to_play = oppnent_hand.hand.pick_random() 
+		await $CardManager.place_opponent_card(card_to_play)
 	if oppnent_hand.hand.size() == 0:
 		declare_dutch()
 	end_opponent_turn()
@@ -39,6 +41,7 @@ func end_opponent_turn() -> void:
 	end_turn_button.visible = true
 	opponent_played_card = true
 	Global.toggle_turn_type()
+	Global.reset_drawn_this_turn()
 	
 	#resetar aqui a variável de puxada nesse turno
 

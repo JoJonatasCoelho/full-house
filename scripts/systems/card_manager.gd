@@ -96,15 +96,23 @@ func start_drag(card: Card):
 			card_slot_found.card_in_slot = null
 
 func finish_drag() -> void:
-	card_being_dragged.scale = Vector2(HIGHLIGHTED_CARD_SIZE, HIGHLIGHTED_CARD_SIZE)
+	card_being_dragged.scale = Vector2(CARD_SIZE, CARD_SIZE)
 	var card_slot_found: CardSlot = raycast_check_for_card_slot()
-	var jogada_realizada = false 
-	if card_slot_found and !Global.has_played_card:
+	var move_is_valid: bool = false
+	var is_cutting: bool = false
+	if card_slot_found:
+		if card_slot_found.card_in_slot:
+			if card_slot_found.card_in_slot.rank == card_being_dragged.rank:
+				is_cutting = true
+		if is_cutting:
+			move_is_valid = true
+		elif Global.turn == TurnType.TurnType.PLAYER and \
+			Global.drawn_this_turn and \
+			not Global.has_played_card:
+			move_is_valid = true
+	if move_is_valid:
 		if card_slot_found.card_in_slot:
 			card_slot_found.get_node("Sprite2D").texture = card_slot_found.card_in_slot.get_node("CardFront").texture
-			if (card_slot_found.card_in_slot.rank != card_being_dragged.rank) and \
-				(Global.turn != TurnType.TurnType.PLAYER):
-				deck_reference.draw_card(false)    
 			card_slot_found.card_in_slot.queue_free()
 		hand_reference.remove_card_from_hand(card_being_dragged)
 		card_being_dragged.reparent(card_slot_found)
@@ -113,9 +121,9 @@ func finish_drag() -> void:
 		card_being_dragged.is_in_card_slot = true
 		card_being_dragged.get_node("AnimationPlayer").play("flip_card_up")
 		highlight_card(card_being_dragged, false)
-		Global.set_played_card()
-		jogada_realizada = true
-	if not jogada_realizada:
+		if not is_cutting:
+			Global.set_played_card()
+	else:
 		hand_reference.add_card_to_hand(card_being_dragged, Global.DEFAULT_CARD_SPEED)
 	card_being_dragged = null
 
