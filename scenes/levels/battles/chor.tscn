@@ -45,4 +45,4 @@ position = Vector2(1706.9999, 616)
 scale = Vector2(0.6486854, 0.6486854)
 sprite_frames = SubResource("SpriteFrames_ecrme")
 animation = &"stand"
-frame_progress = 0.91797155
+frame_progress = 0.28954

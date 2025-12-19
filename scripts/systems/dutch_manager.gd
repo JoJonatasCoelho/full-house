@@ -50,7 +50,10 @@ func opponent_turn() -> void:
 	dutch_button.disabled = true
 	Global.reset_played_card()     
 	Global.reset_drawn_this_turn()
+	animated_sprite.play("draw")
+	await animated_sprite.animation_finished
 	$Deck.draw_card(true)
+	animated_sprite.play("stand")
 	battle_time.start()
 	await battle_time.timeout
 	opponent_decision()
