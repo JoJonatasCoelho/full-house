@@ -46,8 +46,8 @@ Em resposta, nasce a **Diabo Bets**, um grupo fundado por estudantes marginaliza
 ### 🔄 Fluxo de uma rodada
 1. O jogador da vez **puxa uma carta do baralho**.
 2. Ele pode:
-  -- **Manter a carta comprada** e descartar uma carta da própria mão, ou
-  -- **Descartar diretamente a carta comprada**.
+    - **Manter a carta comprada** e descartar uma carta da própria mão, ou
+    - **Descartar diretamente a carta comprada**.
 3. Durante sua rodada, o jogador pode também dar Dutch, que encerra o jogo e faz os jogadores mostrarem suas mãos.
 4. O objetivo é **terminar a partida com a menor soma de valores possível**.
 
