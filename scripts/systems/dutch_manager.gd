@@ -3,6 +3,7 @@ extends Node
 class_name DutchManager
 
 @onready var battle_time: Timer = $Timer
+@onready var result_image: TextureRect = $Control/ResultImage
 @onready var end_turn_button: Button = $Control/EndTurn
 @onready var dutch_button: Button = $Control/DutchButton
 @onready var winner_label: Label = $Control/Label
@@ -14,11 +15,15 @@ class_name DutchManager
 var cards_peeked_start: int = 0
 var jack_selection_1: Card = null
 
+const TEX_VICTORY: Texture2D = preload("res://assets/final_game/victory.png")
+const TEX_DEFEAT: Texture2D = preload("res://assets/final_game/defeat.png")
+
 func _ready() -> void:
 	battle_time.one_shot = true
 	battle_time.wait_time = 1.0
 	end_turn_button.visible = false
 	dutch_button.disabled = true
+	result_image.visible = false
 	Global.game_state = GameState.GameState.WAITING_START_PEEK	
 
 func _on_end_turn_pressed() -> void:
@@ -75,13 +80,21 @@ func declare_dutch() -> void:
 	print("Player: ", player_score, " vs Oponente: ", opponent_score)
 	
 	if player_score < opponent_score:
-		game_over("VITÓRIA!", Color.GREEN)
+		show_result(TEX_VICTORY)
 	elif player_score > opponent_score:
-		game_over("DERROTA...", Color.RED)
+		show_result(TEX_DEFEAT)
 	else:
-		game_over("EMPATE!", Color.YELLOW)
+		show_result(TEX_DEFEAT)
+		
+func show_result(tex: Texture2D) -> void:
+	result_image.texture = tex
+	result_image.visible = true
+	game_over()
 	
-func game_over(message: String, color: Color) -> void:
+func game_over():
+	pass
+	
+func result_game(message: String, color: Color) -> void:
 	if winner_label:
 		winner_label.text = message + "\nPlayer: " + str(player_hand.hand_sum) + \
 		" | CPU: " + str(opponent_hand.hand_sum)
