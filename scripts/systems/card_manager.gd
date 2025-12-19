@@ -34,10 +34,13 @@ func connect_card_signals(card: Card):
 func highlight_card(card: Card, hovered: bool):
 	if hovered:
 		card.scale = Vector2(HIGHLIGHTED_CARD_SIZE, HIGHLIGHTED_CARD_SIZE)
-		card.z_index = 2
+		card.z_index = 2 
 	else:
 		card.scale = Vector2(CARD_SIZE, CARD_SIZE)
-		card.z_index = 1
+		if card.is_in_card_slot:
+			card.z_index = 0 
+		else:
+			card.z_index = 1
 	
 func on_hovered_over_card(card: Card):
 	if !is_hovering_a_card and not card.is_in_card_slot:
@@ -91,34 +94,48 @@ func start_drag(card: Card):
 		var card_slot_found = raycast_check_for_card_slot()
 		if card_slot_found:
 			card_slot_found.card_in_slot = null
-	
+
 func finish_drag() -> void:
 	card_being_dragged.scale = Vector2(HIGHLIGHTED_CARD_SIZE, HIGHLIGHTED_CARD_SIZE)
 	var card_slot_found: CardSlot = raycast_check_for_card_slot()
-	if card_slot_found:
+	var jogada_realizada = false 
+	if card_slot_found and !Global.has_played_card:
 		if card_slot_found.card_in_slot:
-			card_slot_found.get_node("Sprite2D").texture = \
-					card_slot_found.card_in_slot.get_node("CardFront").texture
+			card_slot_found.get_node("Sprite2D").texture = card_slot_found.card_in_slot.get_node("CardFront").texture
+			if (card_slot_found.card_in_slot.rank != card_being_dragged.rank) and \
+				(Global.turn != TurnType.TurnType.PLAYER):
+				deck_reference.draw_card(false)    
 			card_slot_found.card_in_slot.queue_free()
 		hand_reference.remove_card_from_hand(card_being_dragged)
-		card_being_dragged.position = card_slot_found.position
+		card_being_dragged.reparent(card_slot_found)
+		card_being_dragged.position = Vector2.ZERO
 		card_slot_found.card_in_slot = card_being_dragged 
 		card_being_dragged.is_in_card_slot = true
 		card_being_dragged.get_node("AnimationPlayer").play("flip_card_up")
 		highlight_card(card_being_dragged, false)
-	else:
+		Global.set_played_card()
+		jogada_realizada = true
+	if not jogada_realizada:
 		hand_reference.add_card_to_hand(card_being_dragged, Global.DEFAULT_CARD_SPEED)
 	card_being_dragged = null
-	
+
 func place_opponent_card(card: Card) -> void:
 	var card_slot: CardSlot = $"../CardSlot"
 	if card_slot.card_in_slot:
 		card_slot.get_node("Sprite2D").texture = card_slot.card_in_slot.get_node("CardFront").texture
 		card_slot.card_in_slot.queue_free()
 	opponent_hand_reference.remove_card_from_hand(card)
-	card.position = card_slot.position
-	Global.animate_card_to_position(card, card_slot.position, Global.DEFAULT_CARD_SPEED)
+	var old_global_pos = card.global_position
+	card.reparent(card_slot)
+	card.global_position = old_global_pos
+	card.z_index = 10
+	var tween = get_tree().create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(card, "position", Vector2.ZERO, Global.DEFAULT_CARD_SPEED)
+	await tween.finished
 	card.get_node("AnimationPlayer").play("flip_card_up")
+	await get_tree().create_timer(1).timeout
 	card_slot.card_in_slot = card 
 	card.is_in_card_slot = true
 	highlight_card(card, false)

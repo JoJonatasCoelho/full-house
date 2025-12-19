@@ -5,7 +5,6 @@ class_name Deck
 const CARD_SCENE_PATH: String = "res://scenes/interactables/card.tscn"
 const INITIAL_HAND_SIZE: int = 4
 
-var drawn_this_turn: bool = false
 var deck: Array[Card] = []
 
 func _ready() -> void:
@@ -13,12 +12,11 @@ func _ready() -> void:
 	shuffle_deck()
 	for i in range(INITIAL_HAND_SIZE):
 		draw_card(false)
-		drawn_this_turn = false
+		Global.reset_drawn_this_turn()
 		draw_card(true)
-		drawn_this_turn = false
-	drawn_this_turn = true
+		Global.reset_drawn_this_turn()
+	Global.set_drawn_this_turn()
 	
-		
 func generate_standard_deck():
 	deck.clear()
 	for s in CardEnum.Suit.values():
@@ -32,9 +30,7 @@ func  shuffle_deck():
 	deck.shuffle()
 
 func draw_card(opponent_turn: bool):
-	if drawn_this_turn and !opponent_turn:
-		return
-	drawn_this_turn = true
+	Global.set_drawn_this_turn()
 	var card_drawn = deck[0]
 	deck.erase(card_drawn)
 	if deck.size() == 0:
@@ -54,4 +50,3 @@ func draw_card(opponent_turn: bool):
 		var opponent_card_area: Area2D = new_card.get_node("Area2D")
 		new_card.remove_child(opponent_card_area)
 		$"../OpponentHand".add_card_to_hand(new_card, Global.DEFAULT_CARD_SPEED)
-	

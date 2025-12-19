@@ -27,6 +27,7 @@ func update_hand_positions(speed):
 	for i in range(hand.size()):
 		var new_position = Vector2(calculate_card_position(i), hand_y_position)
 		var card = hand[i]
+		print(card, i)
 		card.starting_position = new_position
 		Global.animate_card_to_position(card, new_position, speed)
 		

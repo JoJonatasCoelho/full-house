@@ -14,12 +14,14 @@ func _ready() -> void:
 	battle_time.wait_time = 1
 
 func _on_end_turn_pressed() -> void:
-	opponent_turn()
+	if Global.drawn_this_turn:
+		Global.toggle_turn_type()
+		opponent_turn()
 	
 func opponent_turn() -> void:
 	end_turn_button.disabled = true
 	end_turn_button.visible = false
-	
+	Global.reset_played_card()	
 	$Deck.draw_card(true)
 	opponent_decision()
 	battle_time.start()
@@ -36,6 +38,8 @@ func end_opponent_turn() -> void:
 	end_turn_button.disabled = false
 	end_turn_button.visible = true
 	opponent_played_card = true
+	Global.toggle_turn_type()
+	
 	#resetar aqui a variável de puxada nesse turno
 
 func declare_dutch() -> void:

@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://b4jv0s7ikhf34" path="res://scripts/systems/card_manager.gd" id="1_bfhv8"]
 [ext_resource type="PackedScene" uid="uid://bba86c5flxe07" path="res://scenes/systems/player_hand.tscn" id="2_06sp8"]
 [ext_resource type="PackedScene" uid="uid://dj4lndye1v6t8" path="res://scenes/hud/card_slot.tscn" id="3_kljt5"]
-[ext_resource type="PackedScene" uid="uid://biux6ecqebopw" path="res://scenes/hud/deck.tscn" id="4_nd4bu"]
+[ext_resource type="PackedScene" path="res://scenes/hud/deck.tscn" id="4_nd4bu"]
 [ext_resource type="Texture2D" uid="uid://dc82fetg0quuw" path="res://assets/turn_button.png" id="6_06sp8"]
 [ext_resource type="Script" uid="uid://coendf2brak0u" path="res://scripts/systems/input_manager.gd" id="6_joecx"]
 [ext_resource type="Script" uid="uid://ct0v62m8poum5" path="res://scripts/systems/opponent_hand.gd" id="8_ej02d"]
