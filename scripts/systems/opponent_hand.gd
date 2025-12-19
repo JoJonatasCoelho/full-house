@@ -2,8 +2,8 @@ extends Node
 
 class_name OpponentHand
 
-@onready var center_screen_x = get_viewport().size.x / 2
-@onready var hand_y_position = 0
+@onready var center_screen_x = get_viewport().size.x / 3
+@onready var hand_y_position = get_viewport().size.y * 0.10
 @onready var card_width = center_screen_x / 6
 
 var hand:Array[Card]

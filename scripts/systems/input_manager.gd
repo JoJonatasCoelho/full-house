@@ -6,8 +6,9 @@ signal left_mouse_released
 const CARD_COLLISION_MASK: int = 1
 const DECK_COLLISION_MASK: int = 4
 
-@onready var card_manager_reference = $"../CardManager"
-@onready var deck_reference = $"../Deck"
+@onready var card_manager_reference: CardManager = $"../CardManager"
+@onready var dutch_manager: DutchManager = $".."
+@onready var deck_reference: Deck = $"../Deck"
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index  == MOUSE_BUTTON_LEFT:
@@ -28,7 +29,10 @@ func raycast_at_cursor():
 		if result_collision_mask == CARD_COLLISION_MASK:
 			var card_found = result[0].collider.get_parent()
 			if card_found:
-				card_manager_reference.start_drag(card_found)
+				if Global.game_state == GameState.GameState.NORMAL_PLAY:
+					card_manager_reference.start_drag(card_found)
+				else:
+					dutch_manager.handle_card_click(card_found)
 		elif result_collision_mask == DECK_COLLISION_MASK:
 			if Global.turn == TurnType.TurnType.PLAYER and not Global.drawn_this_turn:
 				deck_reference.draw_card(false)

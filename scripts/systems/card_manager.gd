@@ -5,7 +5,8 @@ class_name CardManager
 @onready var screen_size = get_viewport_rect().size
 @onready var hand_reference: Hand = $"../PlayerHand"
 @onready var opponent_hand_reference: OpponentHand = $"../OpponentHand"
-@onready var deck_reference = $"../Deck"
+@onready var deck_reference: Deck = $"../Deck"
+@onready var dutch_manager: DutchManager = $".."
 
 const CARD_COLLISION_MASK: int = 1
 const SLOT_COLLISION_MASK: int = 2
@@ -27,11 +28,11 @@ func _process(delta: float) -> void:
 		card_being_dragged.position = Vector2(clamp(mouse_pos.x, 0, screen_size.x), 
 											  clamp(mouse_pos.y, 0, screen_size.y))
 
-func connect_card_signals(card: Card):
+func connect_card_signals(card: Card) -> void:
 	card.connect("hovered", on_hovered_over_card)
 	card.connect("hovered_off", on_hovered_off_card)
 	
-func highlight_card(card: Card, hovered: bool):
+func highlight_card(card: Card, hovered: bool) -> void:
 	if hovered:
 		card.scale = Vector2(HIGHLIGHTED_CARD_SIZE, HIGHLIGHTED_CARD_SIZE)
 		card.z_index = 2 
@@ -42,12 +43,12 @@ func highlight_card(card: Card, hovered: bool):
 		else:
 			card.z_index = 1
 	
-func on_hovered_over_card(card: Card):
+func on_hovered_over_card(card: Card) -> void:
 	if !is_hovering_a_card and not card.is_in_card_slot:
 		is_hovering_a_card = true
 		highlight_card(card, true)
 	
-func on_hovered_off_card(card: Card):
+func on_hovered_off_card(card: Card) -> void:
 	highlight_card(card, false)
 	var new_card_hovered: Card = raycast_check_for_card()
 	if new_card_hovered and not new_card_hovered.is_in_card_slot:
@@ -87,7 +88,7 @@ func get_card_with_highest_z_index(cards):
 			highest_z_index = current_card.z_index
 	return highest_z_card
 	
-func start_drag(card: Card):
+func start_drag(card: Card) -> void:
 	if not card.is_in_card_slot:
 		card_being_dragged = card
 		card.scale = Vector2(HIGHLIGHTED_CARD_SIZE, HIGHLIGHTED_CARD_SIZE)
@@ -123,9 +124,22 @@ func finish_drag() -> void:
 		highlight_card(card_being_dragged, false)
 		if not is_cutting:
 			Global.set_played_card()
+		apply_card_effect(card_being_dragged)
 	else:
 		hand_reference.add_card_to_hand(card_being_dragged, Global.DEFAULT_CARD_SPEED)
 	card_being_dragged = null
+
+func apply_card_effect(card: Card) -> void:
+	match card.rank: 
+		CardEnum.Rank.QUEEN:
+			print("Poder da Rainha")
+			Global.set_game_state(GameState.GameState.POWER_QUEEN)
+		CardEnum.Rank.JACK:
+			print("Poder do Jack")
+			Global.set_game_state(GameState.GameState.POWER_JACK_STEP_1)
+		CardEnum.Rank.KING:
+			if Global.turn == TurnType.TurnType.PLAYER:
+				deck_reference.draw_card(true)
 
 func place_opponent_card(card: Card) -> void:
 	var card_slot: CardSlot = $"../CardSlot"
@@ -147,7 +161,41 @@ func place_opponent_card(card: Card) -> void:
 	card_slot.card_in_slot = card 
 	card.is_in_card_slot = true
 	highlight_card(card, false)
+	
+func swap_cards(card1: Card, card2: Card):
+	var hand1 = null
+	var hand2 = null
+	if card1 in hand_reference.hand: hand1 = hand_reference
+	elif card1 in opponent_hand_reference.hand: hand1 = opponent_hand_reference
+	if card2 in hand_reference.hand: hand2 = hand_reference
+	elif card2 in opponent_hand_reference.hand: hand2 = opponent_hand_reference
+	
+	if hand1 and hand2:
+		var idx1 = hand1.hand.find(card1)
+		var idx2 = hand2.hand.find(card2)
+		
+		hand1.hand[idx1] = card2
+		hand2.hand[idx2] = card1
+		
+		var parent1 = card1.get_parent()
+		var parent2 = card2.get_parent()
+		
+		var pos1 = card1.global_position
+		var pos2 = card2.global_position
+		
+		card1.reparent(parent2)
+		card2.reparent(parent1)
+		
+		var tween = get_tree().create_tween()
+		tween.set_parallel(true)
+		tween.tween_property(card1, "global_position", pos2, 0.5)
+		tween.tween_property(card2, "global_position", pos1, 0.5)
+		
+		await tween.finished
+		
+		hand1.update_hand_positions(0.2)
+		hand2.update_hand_positions(0.2)
 
-func on_left_click_released():
+func on_left_click_released() -> void:
 	if card_being_dragged:
 		finish_drag()
