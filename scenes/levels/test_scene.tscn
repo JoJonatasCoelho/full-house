@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://b4jv0s7ikhf34" path="res://scripts/systems/card_manager.gd" id="1_bfhv8"]
 [ext_resource type="PackedScene" uid="uid://bba86c5flxe07" path="res://scenes/systems/player_hand.tscn" id="2_06sp8"]
 [ext_resource type="PackedScene" uid="uid://dj4lndye1v6t8" path="res://scenes/hud/card_slot.tscn" id="3_kljt5"]
-[ext_resource type="PackedScene" uid="uid://c10mwc4af15pu" path="res://scenes/hud/deck.tscn" id="4_nd4bu"]
+[ext_resource type="PackedScene" uid="uid://biux6ecqebopw" path="res://scenes/hud/deck.tscn" id="4_nd4bu"]
 [ext_resource type="Texture2D" uid="uid://dc82fetg0quuw" path="res://assets/turn_button.png" id="6_06sp8"]
 [ext_resource type="Script" uid="uid://coendf2brak0u" path="res://scripts/systems/input_manager.gd" id="6_joecx"]
 [ext_resource type="Script" uid="uid://ct0v62m8poum5" path="res://scripts/systems/opponent_hand.gd" id="8_ej02d"]
@@ -40,7 +40,12 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="EndTurn" type="Button" parent="Control"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.006574142
+anchor_top = 0.0013192613
+anchor_right = 0.006574142
+anchor_bottom = 0.0013192613
 offset_left = 35.0
 offset_top = 216.0
 offset_right = 159.0
@@ -55,10 +60,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -14.5
-offset_top = 208.0
-offset_right = 48.5
-offset_bottom = 239.0
+offset_left = -632.5
+offset_top = 80.0
+offset_right = -569.5
+offset_bottom = 111.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "DUTCH"
