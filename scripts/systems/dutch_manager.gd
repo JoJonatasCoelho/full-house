@@ -16,9 +16,7 @@ class_name DutchManager
 @export_file("*.ogv") var victory_video_path: String 
 @export_file("*.tscn") var next_level_scene: String
 @export var opponent: String
-
-@onready var stand_animation: AnimatedSprite2D = $"../Stand"
-
+@export var animated_sprite: AnimatedSprite2D
 
 var cards_peeked_start: int = 0
 var jack_selection_1: Card = null
@@ -27,7 +25,7 @@ const TEX_VICTORY: Texture2D = preload("res://assets/final_game/victory.png")
 const TEX_DEFEAT: Texture2D = preload("res://assets/final_game/defeat.png")
 
 func _ready() -> void:
-	stand_animation.play("gif")
+	animated_sprite.play("stand")
 	battle_time.one_shot = true
 	battle_time.wait_time = 1.0
 	end_turn_button.visible = false
@@ -78,6 +76,7 @@ func end_opponent_turn() -> void:
 
 func format_animation(action: String) -> String:
 	return "res://assets/characters/animations/" + opponent + "/" + action + ".gif"
+	
 func declare_dutch() -> void:
 	Global.announce_dutch()
 	battle_time.stop()

@@ -1,10 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://dj567yojex7wj"]
+[gd_scene load_steps=8 format=3 uid="uid://dj567yojex7wj"]
 
 [ext_resource type="Script" uid="uid://basjcsbrbvrqm" path="res://scripts/systems/battle.gd" id="1_62kxy"]
 [ext_resource type="Texture2D" uid="uid://bhb0278dxnslv" path="res://assets/background/classroom.png" id="1_pk30b"]
 [ext_resource type="Texture2D" uid="uid://bs1h3lstxsc12" path="res://assets/background/table.png" id="2_e705r"]
 [ext_resource type="PackedScene" uid="uid://u8prst1obv1v" path="res://scenes/levels/test_scene.tscn" id="3_62kxy"]
-[ext_resource type="SpriteFrames" uid="uid://cglvc8sbsts5t" path="res://assets/characters/animations/chor/stand.gif" id="4_e705r"]
+[ext_resource type="Texture2D" uid="uid://b0525pndsca5i" path="res://assets/characters/animations/chor/stand/frame_0_delay-0.2s.png" id="5_mxkj0"]
+[ext_resource type="Texture2D" uid="uid://dbq5ipmylqm3u" path="res://assets/characters/animations/chor/stand/frame_1_delay-0.2s.png" id="6_6jhgv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ecrme"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_mxkj0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6jhgv")
+}],
+"loop": true,
+"name": &"stand",
+"speed": 5.0
+}]
 
 [node name="Chor" type="Node2D"]
 script = ExtResource("1_62kxy")
@@ -19,14 +34,15 @@ position = Vector2(569.98096, 497.0127)
 scale = Vector2(2.8874404, 3.3930707)
 texture = ExtResource("2_e705r")
 
-[node name="TestScene" parent="." instance=ExtResource("3_62kxy")]
+[node name="TestScene" parent="." node_paths=PackedStringArray("animated_sprite") instance=ExtResource("3_62kxy")]
 z_index = 100
 next_level_scene = "uid://d2jf8b3meo7jx"
 opponent = "chor"
+animated_sprite = NodePath("../AnimatedSprite2D")
 
-[node name="Stand" type="AnimatedSprite2D" parent="."]
-position = Vector2(1666.9999, 707)
-scale = Vector2(0.7152377, 0.7152377)
-sprite_frames = ExtResource("4_e705r")
-animation = &"gif"
-frame_progress = 0.82006216
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1706.9999, 616)
+scale = Vector2(0.6486854, 0.6486854)
+sprite_frames = SubResource("SpriteFrames_ecrme")
+animation = &"stand"
+frame_progress = 0.91797155

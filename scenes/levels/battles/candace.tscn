@@ -1,8 +1,73 @@
-[gd_scene load_steps=4 format=3 uid="uid://i47u67y7vpm"]
+[gd_scene load_steps=18 format=3 uid="uid://i47u67y7vpm"]
 
 [ext_resource type="Texture2D" uid="uid://bhb0278dxnslv" path="res://assets/background/classroom.png" id="1_wfvy4"]
 [ext_resource type="Texture2D" uid="uid://bs1h3lstxsc12" path="res://assets/background/table.png" id="2_iqk5k"]
 [ext_resource type="PackedScene" uid="uid://u8prst1obv1v" path="res://scenes/levels/test_scene.tscn" id="3_3iy7f"]
+[ext_resource type="Texture2D" uid="uid://bqdowp3okkk62" path="res://assets/characters/animations/candace/draw/frame_00_delay-0.1s.png" id="4_qspdo"]
+[ext_resource type="Texture2D" uid="uid://c4jeskgu7ridr" path="res://assets/characters/animations/candace/draw/frame_01_delay-0.1s.png" id="5_c2dh7"]
+[ext_resource type="Texture2D" uid="uid://xykmatooo8u7" path="res://assets/characters/animations/candace/draw/frame_02_delay-0.1s.png" id="6_5i3ia"]
+[ext_resource type="Texture2D" uid="uid://ccp5aatycj5pp" path="res://assets/characters/animations/candace/draw/frame_03_delay-0.1s.png" id="7_c3aiq"]
+[ext_resource type="Texture2D" uid="uid://c3ht0bralc2vs" path="res://assets/characters/animations/candace/draw/frame_04_delay-0.1s.png" id="8_arhy8"]
+[ext_resource type="Texture2D" uid="uid://br6sqqes6u55i" path="res://assets/characters/animations/candace/draw/frame_05_delay-0.08s.png" id="9_bm4fl"]
+[ext_resource type="Texture2D" uid="uid://dd1bhafkohmjg" path="res://assets/characters/animations/candace/draw/frame_06_delay-0.1s.png" id="10_u8afp"]
+[ext_resource type="Texture2D" uid="uid://cwv02k0n4tbn8" path="res://assets/characters/animations/candace/draw/frame_07_delay-0.1s.png" id="11_j7m7u"]
+[ext_resource type="Texture2D" uid="uid://dfjumhgxja5hd" path="res://assets/characters/animations/candace/draw/frame_08_delay-0.1s.png" id="12_ysjxn"]
+[ext_resource type="Texture2D" uid="uid://c0g7wrc07bqhc" path="res://assets/characters/animations/candace/draw/frame_09_delay-0.1s.png" id="13_1l37n"]
+[ext_resource type="Texture2D" uid="uid://cgvwdjqkofyfx" path="res://assets/characters/animations/candace/draw/frame_10_delay-0.1s.png" id="14_1utr4"]
+[ext_resource type="Texture2D" uid="uid://4ky1fck50n5v" path="res://assets/characters/animations/candace/stand/frame_0_delay-0.2s.png" id="15_ay6mg"]
+[ext_resource type="Texture2D" uid="uid://bd5cmtw0ufydl" path="res://assets/characters/animations/candace/stand/frame_1_delay-0.15s.png" id="16_xixhs"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jr6bd"]
+animations = [{
+"frames": [{
+"duration": 1.01,
+"texture": ExtResource("4_qspdo")
+}, {
+"duration": 1.01,
+"texture": ExtResource("5_c2dh7")
+}, {
+"duration": 1.01,
+"texture": ExtResource("6_5i3ia")
+}, {
+"duration": 1.01,
+"texture": ExtResource("7_c3aiq")
+}, {
+"duration": 1.01,
+"texture": ExtResource("8_arhy8")
+}, {
+"duration": 1.01,
+"texture": ExtResource("9_bm4fl")
+}, {
+"duration": 1.01,
+"texture": ExtResource("10_u8afp")
+}, {
+"duration": 1.01,
+"texture": ExtResource("11_j7m7u")
+}, {
+"duration": 1.01,
+"texture": ExtResource("12_ysjxn")
+}, {
+"duration": 1.01,
+"texture": ExtResource("13_1l37n")
+}, {
+"duration": 1.01,
+"texture": ExtResource("14_1utr4")
+}],
+"loop": true,
+"name": &"draw",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.05,
+"texture": ExtResource("15_ay6mg")
+}, {
+"duration": 1.05,
+"texture": ExtResource("16_xixhs")
+}],
+"loop": true,
+"name": &"stand",
+"speed": 5.0
+}]
 
 [node name="Chor" type="Node2D"]
 
@@ -19,3 +84,9 @@ texture = ExtResource("2_iqk5k")
 [node name="TestScene" parent="." instance=ExtResource("3_3iy7f")]
 z_index = 100
 opponent = "candace"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1114, 458)
+sprite_frames = SubResource("SpriteFrames_jr6bd")
+animation = &"draw"
+frame_progress = 0.20488797
