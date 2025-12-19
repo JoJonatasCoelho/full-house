@@ -1,0 +1,15 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://dtby0utu1vo1g"
+path="res://.godot/imported/draw.gif-00b3b3110127204ea54f852550ce9bf8.tres"
+
+[deps]
+
+source_file="res://assets/characters/animations/chor/draw.gif"
+dest_files=["res://.godot/imported/draw.gif-00b3b3110127204ea54f852550ce9bf8.tres"]
+
+[params]
+
+frames_per_second=30

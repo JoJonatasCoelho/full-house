@@ -1,0 +1,15 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://dbiesuhagymnu"
+path="res://.godot/imported/draw.gif-75fa5658e703b723a87d8942111c2f42.tres"
+
+[deps]
+
+source_file="res://assets/characters/animations/candace/draw.gif"
+dest_files=["res://.godot/imported/draw.gif-75fa5658e703b723a87d8942111c2f42.tres"]
+
+[params]
+
+frames_per_second=30

@@ -6,6 +6,8 @@ var has_played_card: bool = false
 var turn: TurnType.TurnType = TurnType.TurnType.PLAYER
 var dutched: bool = false
 var game_state: GameState.GameState = GameState.GameState.NORMAL_PLAY
+var next_video_path: String = ""
+var scene_after_video: String = ""
 
 func set_game_state(new_state: GameState.GameState) -> void:
 	game_state = new_state
@@ -34,3 +36,8 @@ func set_played_card() -> void:
 
 func toggle_turn_type() -> void:
 	turn = TurnType.TurnType.OPPONENT if turn == TurnType.TurnType.PLAYER else TurnType.TurnType.PLAYER
+
+func play_cutscene(video_path: String, next_scene: String):
+	next_video_path = video_path
+	scene_after_video = next_scene
+	get_tree().change_scene_to_file("res://scenes/levels/cutscene_player.tscn")

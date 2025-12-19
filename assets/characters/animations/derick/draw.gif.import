@@ -1,0 +1,15 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://bnoolmfsgbgds"
+path="res://.godot/imported/draw.gif-34701b9f920a0cdf66750106ebf88e75.tres"
+
+[deps]
+
+source_file="res://assets/characters/animations/derick/draw.gif"
+dest_files=["res://.godot/imported/draw.gif-34701b9f920a0cdf66750106ebf88e75.tres"]
+
+[params]
+
+frames_per_second=30

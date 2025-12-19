@@ -1,0 +1,15 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://cffaqttp1xmq6"
+path="res://.godot/imported/stand.gif-5534d42acedd76773fc5b5a22205168f.tres"
+
+[deps]
+
+source_file="res://assets/characters/animations/candace/stand.gif"
+dest_files=["res://.godot/imported/stand.gif-5534d42acedd76773fc5b5a22205168f.tres"]
+
+[params]
+
+frames_per_second=30

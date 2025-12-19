@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cx3v1bl5jbxun"]
 
 [ext_resource type="Script" uid="uid://cl6mctx7sj5s4" path="res://scripts/systems/hud/menu.gd" id="1_k3l6u"]
-[ext_resource type="Texture2D" uid="uid://di40edtwfgj74" path="res://assets/maxresdefault.jpg" id="2_tmk6g"]
+[ext_resource type="Texture2D" uid="uid://can8gbf5um76d" path="res://assets/background/background.png" id="2_k3l6u"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -19,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_tmk6g")
+texture = ExtResource("2_k3l6u")
 
 [node name="MenuContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

@@ -1,0 +1,15 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://bhok6sf6o4pqg"
+path="res://.godot/imported/stand.gif-81f7e92bc0c5b22366565e12bd6c2a02.tres"
+
+[deps]
+
+source_file="res://assets/characters/animations/derick/stand.gif"
+dest_files=["res://.godot/imported/stand.gif-81f7e92bc0c5b22366565e12bd6c2a02.tres"]
+
+[params]
+
+frames_per_second=30

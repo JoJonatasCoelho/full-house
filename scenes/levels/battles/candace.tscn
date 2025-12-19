@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://i47u67y7vpm"]
+
+[ext_resource type="Texture2D" uid="uid://bhb0278dxnslv" path="res://assets/background/classroom.png" id="1_wfvy4"]
+[ext_resource type="Texture2D" uid="uid://bs1h3lstxsc12" path="res://assets/background/table.png" id="2_iqk5k"]
+[ext_resource type="PackedScene" uid="uid://u8prst1obv1v" path="res://scenes/levels/test_scene.tscn" id="3_3iy7f"]
+
+[node name="Chor" type="Node2D"]
+
+[node name="Classroom" type="Sprite2D" parent="."]
+position = Vector2(969.981, 494.0127)
+scale = Vector2(2.9030535, 3.3778484)
+texture = ExtResource("1_wfvy4")
+
+[node name="Table" type="Sprite2D" parent="."]
+position = Vector2(503.98096, 497.0127)
+scale = Vector2(2.8874404, 3.3930707)
+texture = ExtResource("2_iqk5k")
+
+[node name="TestScene" parent="." instance=ExtResource("3_3iy7f")]
+z_index = 100
+opponent = "candace"

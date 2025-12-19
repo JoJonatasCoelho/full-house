@@ -1,0 +1,15 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://d1xehqf8lw6hb"
+path="res://.godot/imported/flames.gif-ff0bc1ea3e0c48a5d6f296d7ba2de74d.tres"
+
+[deps]
+
+source_file="res://assets/characters/animations/derick/flames.gif"
+dest_files=["res://.godot/imported/flames.gif-ff0bc1ea3e0c48a5d6f296d7ba2de74d.tres"]
+
+[params]
+
+frames_per_second=30

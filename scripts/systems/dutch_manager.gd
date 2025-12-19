@@ -12,6 +12,14 @@ class_name DutchManager
 @onready var card_manager: CardManager = $CardManager
 @onready var opponent_played_card: bool = false
 
+@export_category("Level Transition")
+@export_file("*.ogv") var victory_video_path: String 
+@export_file("*.tscn") var next_level_scene: String
+@export var opponent: String
+
+@onready var stand_animation: AnimatedSprite2D = $"../Stand"
+
+
 var cards_peeked_start: int = 0
 var jack_selection_1: Card = null
 
@@ -19,11 +27,15 @@ const TEX_VICTORY: Texture2D = preload("res://assets/final_game/victory.png")
 const TEX_DEFEAT: Texture2D = preload("res://assets/final_game/defeat.png")
 
 func _ready() -> void:
+	stand_animation.play("gif")
 	battle_time.one_shot = true
 	battle_time.wait_time = 1.0
 	end_turn_button.visible = false
 	dutch_button.disabled = true
 	result_image.visible = false
+	SaveManager.save_data.current_scene = get_tree().current_scene.scene_file_path
+	SaveManager._save()
+
 	Global.game_state = GameState.GameState.WAITING_START_PEEK	
 
 func _on_end_turn_pressed() -> void:
@@ -52,6 +64,7 @@ func opponent_turn() -> void:
 	else:
 		end_opponent_turn()
 	
+	
 func opponent_decision() -> void:
 	pass
 	
@@ -63,6 +76,8 @@ func end_opponent_turn() -> void:
 	Global.reset_played_card()
 	Global.reset_drawn_this_turn()
 
+func format_animation(action: String) -> String:
+	return "res://assets/characters/animations/" + opponent + "/" + action + ".gif"
 func declare_dutch() -> void:
 	Global.announce_dutch()
 	battle_time.stop()
@@ -80,16 +95,34 @@ func declare_dutch() -> void:
 	print("Player: ", player_score, " vs Oponente: ", opponent_score)
 	
 	if player_score < opponent_score:
-		show_result(TEX_VICTORY)
+		show_result(TEX_VICTORY, true) 
 	elif player_score > opponent_score:
-		show_result(TEX_DEFEAT)
+		show_result(TEX_DEFEAT, false)
 	else:
-		show_result(TEX_DEFEAT)
-		
-func show_result(tex: Texture2D) -> void:
+		show_result(TEX_DEFEAT, false) 
+
+func show_result(tex: Texture2D, is_victory: bool) -> void:
 	result_image.texture = tex
 	result_image.visible = true
-	game_over()
+	
+	if is_victory:
+		process_victory_sequence()
+	else:
+		pass
+	
+func process_victory_sequence() -> void:
+	if next_level_scene != "":
+		SaveManager.save_data.current_scene = next_level_scene
+		SaveManager._save()
+	
+	await get_tree().create_timer(4.0).timeout
+	
+	if victory_video_path != "" and next_level_scene != "":
+		Global.play_cutscene(victory_video_path, next_level_scene)
+	elif next_level_scene != "":
+			get_tree().change_scene_to_file(next_level_scene)
+	else:
+		get_tree().change_scene_to_file("res://scenes/levels/menu.tscn")
 	
 func game_over():
 	pass

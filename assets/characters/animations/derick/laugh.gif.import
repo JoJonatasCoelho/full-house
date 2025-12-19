@@ -1,0 +1,15 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://xmfppwhcptvd"
+path="res://.godot/imported/laugh.gif-5301405c93e98ed631d411b32f1caaeb.tres"
+
+[deps]
+
+source_file="res://assets/characters/animations/derick/laugh.gif"
+dest_files=["res://.godot/imported/laugh.gif-5301405c93e98ed631d411b32f1caaeb.tres"]
+
+[params]
+
+frames_per_second=30

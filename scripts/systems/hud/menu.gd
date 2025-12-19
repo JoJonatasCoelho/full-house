@@ -5,6 +5,9 @@ extends Control
 
 @onready var check_fullscreen: CheckBox = $SettingsContainer/FullscreenCheckBox
 
+const INTRO_VIDEO_PATH = "res://assets/cutscenes/first_day.ogv"
+const FIRST_LEVEL_PATH = "res://scenes/levels/battles/chor.tscn"
+
 func _ready() -> void:
 	var current_mode = DisplayServer.window_get_mode()
 	check_fullscreen.button_pressed = (current_mode == DisplayServer.WINDOW_MODE_FULLSCREEN)
@@ -16,9 +19,8 @@ func _process(delta: float) -> void:
 
 
 func _on_play_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/levels/test_scene.tscn")
-
-
+	Global.play_cutscene(INTRO_VIDEO_PATH, FIRST_LEVEL_PATH)
+	
 func _on_settings_button_pressed() -> void:
 	menu_container.visible = false
 	settings_container.visible = true
@@ -46,3 +48,5 @@ func _on_fullscreen_check_box_toggled(toggled_on: bool) -> void:
 
 func _on_load_button_pressed() -> void:
 	SaveManager._load()
+	if SaveManager.save_data.current_scene != "":
+		get_tree().change_scene_to_file(SaveManager.save_data.current_scene)

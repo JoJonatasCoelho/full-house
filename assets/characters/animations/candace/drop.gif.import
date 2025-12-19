@@ -1,0 +1,15 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://cuq5wus2cf5y2"
+path="res://.godot/imported/drop.gif-d7fd78945451ab7c04d97b2f94b82ddc.tres"
+
+[deps]
+
+source_file="res://assets/characters/animations/candace/drop.gif"
+dest_files=["res://.godot/imported/drop.gif-d7fd78945451ab7c04d97b2f94b82ddc.tres"]
+
+[params]
+
+frames_per_second=30

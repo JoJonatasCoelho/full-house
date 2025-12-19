@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3ckj4cvbaquq"]
+
+[ext_resource type="Script" uid="uid://clr2ytapd4att" path="res://scripts/cutscenes/cutscene_player.gd" id="1_rejpv"]
+
+[node name="CutscenePlayer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rejpv")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand = true

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2jf8b3meo7jx"]
+
+[ext_resource type="Texture2D" uid="uid://bhb0278dxnslv" path="res://assets/background/classroom.png" id="1_h5mtp"]
+[ext_resource type="Texture2D" uid="uid://bs1h3lstxsc12" path="res://assets/background/table.png" id="2_nsaqo"]
+[ext_resource type="PackedScene" uid="uid://u8prst1obv1v" path="res://scenes/levels/test_scene.tscn" id="3_mh5fu"]
+[ext_resource type="SpriteFrames" uid="uid://bnoolmfsgbgds" path="res://assets/characters/animations/derick/draw.gif" id="4_nsaqo"]
+
+[node name="Derick" type="Node2D"]
+
+[node name="Classroom" type="Sprite2D" parent="."]
+position = Vector2(969.981, 494.0127)
+scale = Vector2(2.9030535, 3.3778484)
+texture = ExtResource("1_h5mtp")
+
+[node name="Table" type="Sprite2D" parent="."]
+position = Vector2(503.98096, 497.0127)
+scale = Vector2(2.8874404, 3.3930707)
+texture = ExtResource("2_nsaqo")
+
+[node name="TestScene" parent="." instance=ExtResource("3_mh5fu")]
+z_index = 100
+opponent = "derick"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1600.0001, 678)
+scale = Vector2(0.8738071, 0.8738071)
+sprite_frames = ExtResource("4_nsaqo")
+animation = &"gif"
