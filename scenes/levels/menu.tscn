@@ -44,6 +44,10 @@ text = "Full House"
 layout_mode = 2
 text = "Jogar"
 
+[node name="LoadButton" type="Button" parent="MenuContainer"]
+layout_mode = 2
+text = "Carregar"
+
 [node name="SettingsButton" type="Button" parent="MenuContainer"]
 layout_mode = 2
 text = "Configurações"
@@ -80,6 +84,7 @@ layout_mode = 2
 text = "Voltar"
 
 [connection signal="pressed" from="MenuContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MenuContainer/LoadButton" to="." method="_on_load_button_pressed"]
 [connection signal="pressed" from="MenuContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="MenuContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MenuContainer/QuitButton" to="." method="_on_quit_button_pressed"]
