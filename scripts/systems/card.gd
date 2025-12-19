@@ -17,7 +17,8 @@ func get_id() -> String:
 func peek_card(duration: float = 2.0):
 	$AnimationPlayer.play("flip_card_up")
 	await get_tree().create_timer(duration).timeout
-	$AnimationPlayer.play("flip_card_down")
+	if not is_in_card_slot:
+		$AnimationPlayer.play("flip_card_down")
 
 func _ready() -> void:
 	var manager: CardManager =  get_parent()

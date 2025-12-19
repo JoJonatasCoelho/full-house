@@ -11,7 +11,7 @@ func _ready() -> void:
 	generate_standard_deck()
 	shuffle_deck()
 	for i in range(INITIAL_HAND_SIZE):
-		draw_card(false)
+		draw_card(false, true)
 		Global.reset_drawn_this_turn()
 		draw_card(true)
 		Global.reset_drawn_this_turn()
@@ -29,7 +29,7 @@ func generate_standard_deck():
 func  shuffle_deck():
 	deck.shuffle()
 
-func draw_card(opponent_turn: bool):
+func draw_card(opponent_turn: bool, first_draw: bool = false):
 	Global.set_drawn_this_turn()
 	var card_drawn = deck[0]
 	deck.erase(card_drawn)
@@ -46,6 +46,8 @@ func draw_card(opponent_turn: bool):
 	$"../CardManager".add_child(new_card)
 	if not opponent_turn:
 		$"../PlayerHand".add_card_to_hand(new_card, Global.DEFAULT_CARD_SPEED)
+		if Global.game_state == GameState.GameState.NORMAL_PLAY and not first_draw:
+			new_card.peek_card(2.0)
 	else:
 		#var opponent_card_area: Area2D = new_card.get_node("Area2D")
 		#new_card.remove_child(opponent_card_area)
