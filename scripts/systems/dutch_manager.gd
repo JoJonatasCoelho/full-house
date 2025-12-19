@@ -22,24 +22,30 @@ func _ready() -> void:
 	Global.game_state = GameState.GameState.WAITING_START_PEEK	
 
 func _on_end_turn_pressed() -> void:
-	if Global.drawn_this_turn:
-		Global.toggle_turn_type()
-		opponent_turn()
+	if Global.turn == TurnType.TurnType.PLAYER:
+		finish_player_turn()
+	
+func finish_player_turn() -> void:
+	Global.toggle_turn_type()
+	opponent_turn()
 	
 func opponent_turn() -> void:
 	end_turn_button.disabled = true
 	end_turn_button.visible = false
-	Global.reset_played_card()	
+	dutch_button.disabled = true
+	Global.reset_played_card()     
+	Global.reset_drawn_this_turn()
 	$Deck.draw_card(true)
-	opponent_decision()
 	battle_time.start()
 	await battle_time.timeout
+	opponent_decision()
 	if opponent_hand.hand.size() > 0:
 		var card_to_play = opponent_hand.hand.pick_random() 
 		await $CardManager.place_opponent_card(card_to_play)
 	if opponent_hand.hand.size() == 0:
 		declare_dutch()
-	end_opponent_turn()
+	else:
+		end_opponent_turn()
 	
 func opponent_decision() -> void:
 	pass
@@ -47,11 +53,10 @@ func opponent_decision() -> void:
 func end_opponent_turn() -> void:
 	end_turn_button.disabled = false
 	end_turn_button.visible = true
-	opponent_played_card = true
-	Global.toggle_turn_type()
+	dutch_button.disabled = false
+	Global.toggle_turn_type() 
+	Global.reset_played_card()
 	Global.reset_drawn_this_turn()
-	
-	#resetar aqui a variável de puxada nesse turno
 
 func declare_dutch() -> void:
 	Global.announce_dutch()
@@ -88,8 +93,8 @@ func _on_dutch_button_pressed() -> void:
 		declare_dutch()
 
 func reveal_oppenent_hand() -> void:
-	pass
-	
+	for card in opponent_hand.hand:
+		card.get_node("AnimationPlayer").play("flip_card_up")
 
 func handle_card_click(card: Card):
 	match Global.game_state:
@@ -120,8 +125,7 @@ func start_game_officially() -> void:
 	
 func finish_power_action() -> void:
 	Global.set_game_state(GameState.GameState.NORMAL_PLAY)
-	end_opponent_turn()
-
+	finish_player_turn()
 	
 func perform_jack_swap(card1: Card, card2: Card):
 	card_manager.swap_cards(card1, card2)

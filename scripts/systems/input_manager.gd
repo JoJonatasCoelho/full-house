@@ -9,6 +9,7 @@ const DECK_COLLISION_MASK: int = 4
 @onready var card_manager_reference: CardManager = $"../CardManager"
 @onready var dutch_manager: DutchManager = $".."
 @onready var deck_reference: Deck = $"../Deck"
+@onready var opponent_hand: OpponentHand = $"../OpponentHand"
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index  == MOUSE_BUTTON_LEFT:
@@ -29,10 +30,18 @@ func raycast_at_cursor():
 		if result_collision_mask == CARD_COLLISION_MASK:
 			var card_found = result[0].collider.get_parent()
 			if card_found:
-				if Global.game_state == GameState.GameState.NORMAL_PLAY:
-					card_manager_reference.start_drag(card_found)
+				var is_opponent_card = card_found in opponent_hand.hand
+				if is_opponent_card:
+					if Global.game_state == GameState.GameState.POWER_JACK_STEP_1 or \
+						Global.game_state == GameState.GameState.POWER_JACK_STEP_2:
+						dutch_manager.handle_card_click(card_found)
+					else:
+						pass
 				else:
-					dutch_manager.handle_card_click(card_found)
+					if Global.game_state == GameState.GameState.NORMAL_PLAY:
+						card_manager_reference.start_drag(card_found)
+					else:
+						dutch_manager.handle_card_click(card_found)
 		elif result_collision_mask == DECK_COLLISION_MASK:
 			if Global.turn == TurnType.TurnType.PLAYER and not Global.drawn_this_turn:
 				deck_reference.draw_card(false)

@@ -47,6 +47,6 @@ func draw_card(opponent_turn: bool):
 	if not opponent_turn:
 		$"../PlayerHand".add_card_to_hand(new_card, Global.DEFAULT_CARD_SPEED)
 	else:
-		var opponent_card_area: Area2D = new_card.get_node("Area2D")
-		new_card.remove_child(opponent_card_area)
+		#var opponent_card_area: Area2D = new_card.get_node("Area2D")
+		#new_card.remove_child(opponent_card_area)
 		$"../OpponentHand".add_card_to_hand(new_card, Global.DEFAULT_CARD_SPEED)

@@ -44,7 +44,9 @@ func highlight_card(card: Card, hovered: bool) -> void:
 			card.z_index = 1
 	
 func on_hovered_over_card(card: Card) -> void:
-	if !is_hovering_a_card and not card.is_in_card_slot:
+	var is_player_card = card in hand_reference.hand
+	var is_interacting_with_opponent = Global.game_state == GameState.GameState.POWER_JACK_STEP_2
+	if (is_player_card or is_interacting_with_opponent) and !is_hovering_a_card and not card.is_in_card_slot:
 		is_hovering_a_card = true
 		highlight_card(card, true)
 	
@@ -130,16 +132,25 @@ func finish_drag() -> void:
 	card_being_dragged = null
 
 func apply_card_effect(card: Card) -> void:
-	match card.rank: 
-		CardEnum.Rank.QUEEN:
-			print("Poder da Rainha")
-			Global.set_game_state(GameState.GameState.POWER_QUEEN)
-		CardEnum.Rank.JACK:
-			print("Poder do Jack")
-			Global.set_game_state(GameState.GameState.POWER_JACK_STEP_1)
-		CardEnum.Rank.KING:
-			if Global.turn == TurnType.TurnType.PLAYER:
-				deck_reference.draw_card(true)
+	if Global.turn == TurnType.TurnType.PLAYER:
+		match card.rank: 
+			CardEnum.Rank.QUEEN:
+				print("Poder da Rainha")
+				Global.set_game_state(GameState.GameState.POWER_QUEEN)
+			CardEnum.Rank.JACK:
+				print("Poder do Jack")
+				Global.set_game_state(GameState.GameState.POWER_JACK_STEP_1)
+			CardEnum.Rank.KING:
+				if Global.turn == TurnType.TurnType.PLAYER and not (CardEnum.Suit.CLUBS or CardEnum.Suit.SPADES):
+					deck_reference.draw_card(true)
+					print("vvermelhro")
+			_:
+				dutch_manager.finish_player_turn()
+	elif Global.turn == TurnType.TurnType.OPPONENT:
+		if card.rank == CardEnum.Rank.KING and \
+		   (card.suit == CardEnum.Suit.HEARTS or card.suit == CardEnum.Suit.DIAMONDS):
+			print("IA usou Rei Vermelho.")
+			deck_reference.draw_card(false) 
 
 func place_opponent_card(card: Card) -> void:
 	var card_slot: CardSlot = $"../CardSlot"
@@ -161,6 +172,7 @@ func place_opponent_card(card: Card) -> void:
 	card_slot.card_in_slot = card 
 	card.is_in_card_slot = true
 	highlight_card(card, false)
+	apply_card_effect(card)
 	
 func swap_cards(card1: Card, card2: Card):
 	var hand1 = null
