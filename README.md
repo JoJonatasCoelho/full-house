@@ -67,7 +67,7 @@ Algumas cartas possuem efeitos estratégicos quando descartadas:
 👁️ Permite olhar uma carta da sua própria mão.
 - **Rei vermelho (♥♦)**
 ➕ Permite adicionar uma carta à mão de um oponente, aumentando a soma dele.
-*(O rei preto não possui efeito especial, mas pode ser extremamente vantajoso por valer zero.)*
+> *(O rei preto não possui efeito especial, mas pode ser extremamente vantajoso por valer zero.)*
 
 ---
 
