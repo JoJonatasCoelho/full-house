@@ -53,7 +53,7 @@ Em resposta, nasce a **Diabo Bets**, um grupo fundado por estudantes marginaliza
 ### ✂️ Corte
 O **corte** é uma jogada rápida que recompensa atenção e reflexos:
 
-- Se o jogador for rápido o suficiente, ele pode **descartar duas cartas iguais da própria mão ao mesmo tempo** em uma só rodada.
+- Se o jogador for rápido o suficiente, ele pode **descartar duas (ou mais) cartas iguais da própria mão ao mesmo tempo** em uma só rodada.
 - Durante a sua rodada, se o oponente tiver **acabado de descartar uma carta igual a uma que você possui**, você pode:
   - **Não puxar uma carta do baralho**, e
   - **Descartar imediatamente a carta igual da sua mão**.
