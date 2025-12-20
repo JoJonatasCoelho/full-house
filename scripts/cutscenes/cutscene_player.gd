@@ -7,8 +7,10 @@ func _ready() -> void:
 		var stream
 		if Global.extra_cutscene != "":
 			stream = load(Global.extra_cutscene)
+			$DerickWrath.play()
 			print("suposta extra scene")
 		else: 
+			$Cutscenes.play()
 			stream = load(Global.next_video_path)
 		video_player.stream = stream
 		video_player.play()

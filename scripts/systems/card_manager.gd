@@ -141,9 +141,14 @@ func apply_card_effect(card: Card) -> void:
 				print("Poder do Jack")
 				Global.set_game_state(GameState.GameState.POWER_JACK_STEP_1)
 			CardEnum.Rank.KING:
-				if Global.turn == TurnType.TurnType.PLAYER and not (CardEnum.Suit.CLUBS or CardEnum.Suit.SPADES):
-					deck_reference.draw_card(true)
-					print("vvermelhro")
+				var is_clubs: bool = card.suit == CardEnum.Suit.CLUBS
+				var is_spades: bool = card.suit == CardEnum.Suit.SPADES
+				if not (is_clubs or is_spades):
+					if Global.turn == TurnType.TurnType.PLAYER:
+						deck_reference.draw_card(true)
+					else: 
+						deck_reference.draw_card(false)
+				dutch_manager.finish_player_turn()
 			_:
 				dutch_manager.finish_player_turn()
 	elif Global.turn == TurnType.TurnType.OPPONENT:

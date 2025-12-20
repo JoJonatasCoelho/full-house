@@ -6,6 +6,8 @@ class_name DutchManager
 @onready var result_image: TextureRect = $Control/ResultImage
 @onready var end_turn_button: Button = $Control/EndTurn
 @onready var dutch_button: Button = $Control/DutchButton
+@onready var retry_button: Button = $Control/Retry
+
 @onready var winner_label: Label = $Control/Label
 @onready var player_hand: Hand = $PlayerHand
 @onready var opponent_hand: OpponentHand = $OpponentHand
@@ -25,7 +27,7 @@ var jack_selection_1: Card = null
 
 const TEX_VICTORY: Texture2D = preload("res://assets/final_game/victory.png")
 const TEX_DEFEAT: Texture2D = preload("res://assets/final_game/defeat.png")
-const TEX_DRAW: Texture = preload("res://assets/buttons/draw.png")
+const TEX_DRAW: Texture = preload("res://assets/final_game/draw.png")
 const next_derick_scene_path: String = "res://assets/cutscenes/3_cutscene.ogv"
 const cutscene_path: String = "res://scenes/levels/cutscene_player.tscn"
 
@@ -39,7 +41,6 @@ func _ready() -> void:
 	result_image.visible = false
 	SaveManager.save_data.current_scene = get_tree().current_scene.scene_file_path
 	SaveManager._save()
-
 	Global.game_state = GameState.GameState.WAITING_START_PEEK	
 
 func _on_end_turn_pressed() -> void:
@@ -159,13 +160,16 @@ func process_victory_sequence() -> void:
 		get_tree().change_scene_to_file("res://scenes/levels/menu.tscn")
 	
 func process_defeat_sequence() -> void:
+	retry_button.visible = true
+	retry_button.disabled = false
 	result_game(EndGameLines.get_message(randi_range(1, 3), false), Color.RED)
-	await get_tree().create_timer(3.0).timeout
+
+func _on_retry_pressed() -> void:
 	if SaveManager.has_method("load_game_and_switch_scene"):
 		SaveManager.load_game_and_switch_scene()
 	else:
 		get_tree().reload_current_scene()
-		
+
 func game_over():
 	pass
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://u8prst1obv1v"]
+[gd_scene load_steps=20 format=3 uid="uid://u8prst1obv1v"]
 
 [ext_resource type="Script" uid="uid://p5wjkjbu34jw" path="res://scripts/systems/dutch_manager.gd" id="1_06sp8"]
 [ext_resource type="Script" uid="uid://b4jv0s7ikhf34" path="res://scripts/systems/card_manager.gd" id="1_bfhv8"]
@@ -11,6 +11,10 @@
 [ext_resource type="FontFile" uid="uid://d00xv2mk53qi1" path="res://assets/fonts/SMT_DevilSurvivor-Regular (1).ttf" id="9_j3vxy"]
 [ext_resource type="Texture2D" uid="uid://c7pr5k624a17b" path="res://assets/buttons/pixil-frame-0(36).png" id="9_q0k0a"]
 [ext_resource type="Texture2D" uid="uid://k1yv4eoost6v" path="res://assets/buttons/dutch.png" id="9_ucqeg"]
+[ext_resource type="Texture2D" uid="uid://1lgwkp8vg78a" path="res://assets/final_game/victory.png" id="10_wjwi7"]
+[ext_resource type="AudioStream" uid="uid://dechoa1hanuot" path="res://assets/sounds/SFX/Card Dealing FX 3-2.wav" id="13_sghpj"]
+[ext_resource type="AudioStream" uid="uid://krdpqsvwmv5h" path="res://assets/sounds/SFX/Card Deal 2.wav" id="13_wxhui"]
+[ext_resource type="AudioStream" uid="uid://b6xtbgjnc2oim" path="res://assets/sounds/musics/Game-Menu_Looping_LoFi.ogg" id="14_7jghb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wjwi7"]
 font = ExtResource("9_j3vxy")
@@ -170,7 +174,7 @@ grow_vertical = 2
 label_settings = SubResource("LabelSettings_wjwi7")
 
 [node name="ResultImage" type="TextureRect" parent="Control"]
-z_index = 100
+z_index = 90
 custom_minimum_size = Vector2(5, 2)
 layout_mode = 1
 anchors_preset = -1
@@ -185,12 +189,25 @@ offset_bottom = 1253.28
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.36703265, 0.36799267)
+texture = ExtResource("10_wjwi7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Control"]
 z_index = -99
 position = Vector2(344, 392)
 scale = Vector2(0.2710337, 0.2710337)
 texture = ExtResource("9_q0k0a")
+
+[node name="Retry" type="Button" parent="Control"]
+visible = false
+z_index = 101
+layout_mode = 0
+offset_left = 876.2195
+offset_top = 701.8773
+offset_right = 993.2195
+offset_bottom = 732.8773
+scale = Vector2(2.1753564, 2.2699664)
+disabled = true
+text = "Tentar a sorte"
 
 [node name="Deck" parent="." instance=ExtResource("4_nd4bu")]
 position = Vector2(95, 412.00003)
@@ -201,5 +218,18 @@ libraries = {
 &"": SubResource("AnimationLibrary_wjwi7")
 }
 
+[node name="DrawSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_wxhui")
+
+[node name="BattleMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_7jghb")
+autoplay = true
+
+[node name="DeckSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_sghpj")
+volume_db = 10.0
+autoplay = true
+
 [connection signal="pressed" from="Control/EndTurn" to="." method="_on_end_turn_pressed"]
 [connection signal="pressed" from="Control/DutchButton" to="." method="_on_dutch_button_pressed"]
+[connection signal="pressed" from="Control/Retry" to="." method="_on_retry_pressed"]

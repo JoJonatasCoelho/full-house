@@ -5,11 +5,18 @@ class_name Deck
 const CARD_SCENE_PATH: String = "res://scenes/interactables/card.tscn"
 const INITIAL_HAND_SIZE: int = 4
 
+@onready var draw_sound: AudioStreamPlayer2D = $"../DrawSound"
+
 var deck: Array[Card] = []
 
 func _ready() -> void:
 	generate_standard_deck()
 	shuffle_deck()
+	# carta forçada
+	#var new_card: Card = Card.new()
+	#new_card.rank = CardEnum.Rank.KING
+	#new_card.suit = CardEnum.Suit.HEARTS
+	#deck.insert(0, new_card)
 	for i in range(INITIAL_HAND_SIZE):
 		draw_card(false, true)
 		Global.reset_drawn_this_turn()
@@ -25,13 +32,19 @@ func generate_standard_deck():
 			new_card.rank = r as CardEnum.Rank
 			new_card.suit = s as CardEnum.Suit
 			deck.append(new_card)
+			
 
 func  shuffle_deck():
 	deck.shuffle()
 
-func draw_card(opponent_turn: bool, first_draw: bool = false):
+func draw_card(opponent_turn: bool, first_draw: bool = false) -> void:
 	Global.set_drawn_this_turn()
-	var card_drawn = deck[0]
+	var card_drawn: Card
+	if deck.size() != 0:
+		draw_sound.play()
+		card_drawn = deck[0]
+	else:
+		return
 	deck.erase(card_drawn)
 	if deck.size() == 0:
 		$Area2D/CollisionShape2D.disabled = true

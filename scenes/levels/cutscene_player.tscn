@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3ckj4cvbaquq"]
+[gd_scene load_steps=4 format=3 uid="uid://b3ckj4cvbaquq"]
 
 [ext_resource type="Script" uid="uid://clr2ytapd4att" path="res://scripts/cutscenes/cutscene_player.gd" id="1_rejpv"]
+[ext_resource type="AudioStream" uid="uid://4pvaogofjavi" path="res://assets/sounds/musics/Dealing With The Devil OGG.ogg" id="2_rj4aw"]
+[ext_resource type="AudioStream" uid="uid://cwr05pfmsbmr4" path="res://assets/sounds/musics/Seedy Streets OGG.ogg" id="3_a356a"]
 
 [node name="CutscenePlayer" type="Control"]
 layout_mode = 3
@@ -19,3 +21,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 expand = true
+
+[node name="DerickWrath" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_rj4aw")
+volume_db = -3.059
+
+[node name="Cutscenes" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_a356a")
+volume_db = -3.059

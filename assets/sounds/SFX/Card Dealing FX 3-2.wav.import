@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dechoa1hanuot"
+path="res://.godot/imported/Card Dealing FX 3-2.wav-df26c44f683f36759e085c25c20b9123.sample"
+
+[deps]
+
+source_file="res://assets/sounds/SFX/Card Dealing FX 3-2.wav"
+dest_files=["res://.godot/imported/Card Dealing FX 3-2.wav-df26c44f683f36759e085c25c20b9123.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

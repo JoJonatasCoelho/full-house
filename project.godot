@@ -14,6 +14,7 @@ config/name="Full house"
 run/main_scene="uid://cx3v1bl5jbxun"
 config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/bg_color=Color(0.57226646, 0.04695435, 0.33356047, 1)
+boot_splash/image="uid://fnfct1mmoomo"
 config/icon="res://icon.svg"
 
 [autoload]
