@@ -186,8 +186,8 @@ opponent = "derick"
 animated_sprite = NodePath("../AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1641.9999, 615)
-scale = Vector2(0.6486854, 0.6486854)
+position = Vector2(1645, 601.00006)
+scale = Vector2(0.62631464, 0.62631464)
 sprite_frames = SubResource("SpriteFrames_y3w8m")
 animation = &"drop"
 frame = 7
@@ -200,3 +200,4 @@ libraries = {
 
 [node name="Tabletop" parent="." instance=ExtResource("36_mrrqs")]
 z_index = -99
+position = Vector2(0, -3)

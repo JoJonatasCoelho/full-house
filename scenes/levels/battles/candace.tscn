@@ -126,7 +126,7 @@ opponent = "candace"
 animated_sprite = NodePath("../AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1636, 611)
+position = Vector2(1649.0001, 611)
 scale = Vector2(0.63112044, 0.63112044)
 sprite_frames = SubResource("SpriteFrames_jr6bd")
 animation = &"draw"
