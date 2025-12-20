@@ -31,7 +31,6 @@ Em resposta, nasce a **Diabo Bets**, um grupo fundado por estudantes marginaliza
 |------|--------|
 | Interagir | **Mouse** |
 
-
 ---
 
 ## 📘 Tutorial
@@ -62,13 +61,30 @@ Em resposta, nasce a **Diabo Bets**, um grupo fundado por estudantes marginaliza
 ### ✨ Efeitos especiais das cartas
 Algumas cartas possuem efeitos estratégicos quando descartadas:
 - **Valete (J)**
-🔁 Permite trocar toda a sua mão com a mão de um oponente.
+🔁 Permite trocar uma carta sua com uma carta de um oponente.
 - **Rainha (Q)**
 👁️ Permite olhar uma carta da sua própria mão.
 - **Rei vermelho (♥♦)**
-➕ Permite adicionar uma carta à mão de um oponente, aumentando a soma dele.
+➕ Permite adicionar uma carta da pilha à mão de um oponente, aumentando a soma dele.
 > *(O rei preto não possui efeito especial, mas pode ser extremamente vantajoso por valer zero.)*
 
+---
+
+## 📝 Créditos e Licenças
+
+### 🎵 Trilhas Sonoras
+- *"Game Menu — Looping"*  
+  por **Eric Matyas**  
+  www.soundimage.org  
+
+- *"Seedy Streets"*  
+  por **Darren Curtis**  
+  www.darrencurtismusic.com  
+
+- *"Dealing With The Devil"*  
+  por **Darren Curtis**  
+  www.darrencurtismusic.com
+  
 ---
 
 ## 🧱 Engine e Ferramentas
