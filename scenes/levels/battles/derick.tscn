@@ -186,6 +186,7 @@ opponent = "derick"
 animated_sprite = NodePath("../AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 100
 position = Vector2(1645, 601.00006)
 scale = Vector2(0.62631464, 0.62631464)
 sprite_frames = SubResource("SpriteFrames_y3w8m")

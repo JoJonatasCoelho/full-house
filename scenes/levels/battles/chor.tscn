@@ -127,6 +127,7 @@ opponent = "chor"
 animated_sprite = NodePath("../AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 100
 position = Vector2(1642.0001, 599)
 scale = Vector2(0.5958775, 0.5958775)
 sprite_frames = SubResource("SpriteFrames_ecrme")
