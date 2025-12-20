@@ -5,7 +5,7 @@ extends Control
 
 @onready var check_fullscreen: CheckBox = $SettingsContainer/FullscreenCheckBox
 
-const INTRO_VIDEO_PATH = "res://assets/cutscenes/first_day.ogv"
+const INTRO_VIDEO_PATH = "res://assets/cutscenes/1_cutscene.ogv"
 const FIRST_LEVEL_PATH = "res://scenes/levels/battles/chor.tscn"
 
 func _ready() -> void:

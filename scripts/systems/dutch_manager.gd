@@ -10,7 +10,9 @@ class_name DutchManager
 @onready var player_hand: Hand = $PlayerHand
 @onready var opponent_hand: OpponentHand = $OpponentHand
 @onready var card_manager: CardManager = $CardManager
+@onready var animator: AnimationPlayer= $AnimationPlayer
 @onready var opponent_played_card: bool = false
+@onready var fade_rect: ColorRect = $"../TransitionLayer/ColorRect"
 
 @export_category("Level Transition")
 @export_file("*.ogv") var victory_video_path: String 
@@ -24,9 +26,11 @@ var jack_selection_1: Card = null
 const TEX_VICTORY: Texture2D = preload("res://assets/final_game/victory.png")
 const TEX_DEFEAT: Texture2D = preload("res://assets/final_game/defeat.png")
 const TEX_DRAW: Texture = preload("res://assets/buttons/draw.png")
+const next_derick_scene_path: String = "res://assets/cutscenes/3_cutscene.ogv"
+const cutscene_path: String = "res://scenes/levels/cutscene_player.tscn"
 
 func _ready() -> void:
-	print(get_viewport().size.y)
+	animator.play("intro")
 	animated_sprite.play("stand")
 	battle_time.one_shot = true
 	battle_time.wait_time = 1.0
@@ -65,6 +69,11 @@ func opponent_turn() -> void:
 	battle_time.start()
 	await battle_time.timeout
 	opponent_decision()
+	if opponent == "Derick":
+		if randi_range(1, 10) > 5:
+			animated_sprite.play("laugh")
+			await animated_sprite.animation_finished
+			animated_sprite.play("stand")
 	if opponent_hand.hand.size() > 0:
 		var card_to_play = opponent_hand.hand.pick_random() 
 		await $CardManager.place_opponent_card(card_to_play)
@@ -78,6 +87,7 @@ func opponent_decision() -> void:
 	pass
 	
 func end_opponent_turn() -> void:
+	
 	end_turn_button.disabled = false
 	end_turn_button.visible = true
 	dutch_button.disabled = false
@@ -94,6 +104,9 @@ func declare_dutch() -> void:
 	$InputManager.set_process_input(false)
 	
 	reveal_oppenent_hand()
+	reveal_hand()
+	if opponent == "Derick":
+		play_fade_out_sequence(next_derick_scene_path)
 	
 	opponent_hand.recalculate_hand_sum() 
 	var opponent_score = opponent_hand.hand_sum
@@ -101,12 +114,26 @@ func declare_dutch() -> void:
 	
 	print("Player: ", player_score, " vs Oponente: ", opponent_score)
 	
+	#Todo: fazer em um enum
+	
 	if player_score < opponent_score:
 		show_result(TEX_VICTORY, true) 
 	elif player_score > opponent_score:
 		show_result(TEX_DEFEAT, false)
 	else:
 		show_result(TEX_DRAW, false) 
+
+func play_fade_out_sequence(next_scene_path: String, duration: float = 1.0) -> void:
+	animated_sprite.play("flames")
+	await get_tree().create_timer(0.5).timeout
+	fade_rect.visible = true
+	fade_rect.modulate.a = 0.0
+	var tween = create_tween()
+	tween.tween_property(fade_rect, "modulate:a", 1.0, duration)
+	await tween.finished
+	Global.set_extra_cutscene(next_derick_scene_path)
+	Global.play_cutscene(victory_video_path, next_level_scene)
+
 
 func show_result(tex: Texture2D, is_victory: bool) -> void:
 	result_image.texture = tex
@@ -121,7 +148,7 @@ func process_victory_sequence() -> void:
 	if next_level_scene != "":
 		SaveManager.save_data.current_scene = next_level_scene
 		SaveManager._save()
-	
+	result_game(EndGameLines.get_message(randi_range(1, 3)), Color.GREEN)
 	await get_tree().create_timer(4.0).timeout
 	
 	if victory_video_path != "" and next_level_scene != "":
@@ -132,8 +159,8 @@ func process_victory_sequence() -> void:
 		get_tree().change_scene_to_file("res://scenes/levels/menu.tscn")
 	
 func process_defeat_sequence() -> void:
+	result_game(EndGameLines.get_message(randi_range(1, 3), false), Color.RED)
 	await get_tree().create_timer(3.0).timeout
-	
 	if SaveManager.has_method("load_game_and_switch_scene"):
 		SaveManager.load_game_and_switch_scene()
 	else:
@@ -145,7 +172,7 @@ func game_over():
 func result_game(message: String, color: Color) -> void:
 	if winner_label:
 		winner_label.text = message + "\nPlayer: " + str(player_hand.hand_sum) + \
-		" | CPU: " + str(opponent_hand.hand_sum)
+		" | "+ opponent + ": " + str(opponent_hand.hand_sum)
 		winner_label.modulate = color
 		winner_label.visible = true
 
@@ -155,6 +182,10 @@ func _on_dutch_button_pressed() -> void:
 
 func reveal_oppenent_hand() -> void:
 	for card in opponent_hand.hand:
+		card.get_node("AnimationPlayer").play("flip_card_up")
+		
+func reveal_hand() -> void:
+	for card in player_hand.hand:
 		card.get_node("AnimationPlayer").play("flip_card_up")
 
 func handle_card_click(card: Card):

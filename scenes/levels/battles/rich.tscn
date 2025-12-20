@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bitb8vhkjmwkn"]
+[gd_scene load_steps=32 format=3 uid="uid://bitb8vhkjmwkn"]
 
 [ext_resource type="Script" uid="uid://basjcsbrbvrqm" path="res://scripts/systems/battle.gd" id="1_nvqvh"]
 [ext_resource type="PackedScene" uid="uid://u8prst1obv1v" path="res://scenes/levels/test_scene.tscn" id="3_nvqvh"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://uwsxabre3d6n" path="res://assets/characters/animations/rich/stand/frame_0_delay-0.2s.png" id="29_dk22b"]
 [ext_resource type="PackedScene" uid="uid://b2m1rp3qnqbga" path="res://scenes/hud/tabletop.tscn" id="29_mru0y"]
 [ext_resource type="Texture2D" uid="uid://be6m55w3nn8w3" path="res://assets/characters/animations/rich/stand/frame_1_delay-0.25s.png" id="30_dvyo8"]
+[ext_resource type="Texture2D" uid="uid://cn0y40hbc6eb2" path="res://assets/background/cinema.png" id="30_frb42"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c2vhg"]
 animations = [{
@@ -131,7 +132,9 @@ script = ExtResource("1_nvqvh")
 
 [node name="TestScene" parent="." node_paths=PackedStringArray("animated_sprite") instance=ExtResource("3_nvqvh")]
 z_index = 100
-opponent = "rich"
+victory_video_path = "uid://xdhrppfhjneo"
+next_level_scene = "uid://cx3v1bl5jbxun"
+opponent = "Rich"
 animated_sprite = NodePath("../AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -146,3 +149,4 @@ frame_progress = 1.0
 [node name="Tabletop" parent="." instance=ExtResource("29_mru0y")]
 z_index = -99
 position = Vector2(-53, 0)
+background_tex = ExtResource("30_frb42")

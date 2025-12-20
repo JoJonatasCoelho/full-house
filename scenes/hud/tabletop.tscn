@@ -1,8 +1,70 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2m1rp3qnqbga"]
+[gd_scene load_steps=8 format=3 uid="uid://b2m1rp3qnqbga"]
 
 [ext_resource type="Script" uid="uid://dydb3wctoxpg6" path="res://scripts/systems/hud/tabletop.gd" id="1_kii7s"]
 [ext_resource type="Texture2D" uid="uid://bs1h3lstxsc12" path="res://assets/background/table.png" id="2_wohco"]
 [ext_resource type="Texture2D" uid="uid://luqjos82kyg3" path="res://assets/buttons/pixil-frame-0(37).png" id="3_wohco"]
+[ext_resource type="Texture2D" uid="uid://bhb0278dxnslv" path="res://assets/background/classroom.png" id="4_kii7s"]
+
+[sub_resource type="Animation" id="Animation_wohco"]
+resource_name = "intro"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Table:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-454, 384.129), Vector2(505.1631, 384.12924)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Divisor:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(15.999992, 384.129), Vector2(988.1631, 384.12924)]
+}
+
+[sub_resource type="Animation" id="Animation_kii7s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Table:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(505.1631, 384.12924)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Divisor:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(988.1631, 384.12924)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kii7s"]
+_data = {
+&"RESET": SubResource("Animation_kii7s"),
+&"intro": SubResource("Animation_wohco")
+}
 
 [node name="Tabletop" type="Node2D" node_paths=PackedStringArray("background_node")]
 script = ExtResource("1_kii7s")
@@ -13,17 +75,25 @@ position = Vector2(505.1631, 384.12924)
 scale = Vector2(1.7505096, 2.139607)
 texture = ExtResource("2_wohco")
 
-[node name="Scene" type="TextureRect" parent="."]
-z_index = 30
-offset_left = 1089.1631
-offset_top = 5.129242
-offset_right = 1729.1631
-offset_bottom = 365.12924
-scale = Vector2(1.2862736, 2.1095996)
-metadata/_edit_use_anchors_ = true
-
 [node name="Divisor" type="Sprite2D" parent="."]
 z_index = 100
 position = Vector2(988.1631, 384.12924)
 scale = Vector2(0.2302205, 0.3001441)
 texture = ExtResource("3_wohco")
+
+[node name="Scene" type="TextureRect" parent="."]
+z_index = -1
+offset_left = 99.0
+offset_top = -5.999999
+offset_right = 739.0
+offset_bottom = 354.0
+rotation = -6.2831855
+scale = Vector2(2.1720078, 2.1720078)
+mouse_filter = 2
+texture = ExtResource("4_kii7s")
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_kii7s")
+}

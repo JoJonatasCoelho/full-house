@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://i47u67y7vpm"]
+[gd_scene load_steps=29 format=3 uid="uid://i47u67y7vpm"]
 
 [ext_resource type="PackedScene" uid="uid://u8prst1obv1v" path="res://scenes/levels/test_scene.tscn" id="3_3iy7f"]
 [ext_resource type="Texture2D" uid="uid://bqdowp3okkk62" path="res://assets/characters/animations/candace/draw/frame_00_delay-0.1s.png" id="4_qspdo"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://bw1n6flqh3ml7" path="res://assets/characters/animations/candace/drop/frame_09_delay-0.1s.png" id="24_k3dio"]
 [ext_resource type="Texture2D" uid="uid://bvkabwvk0wqyh" path="res://assets/characters/animations/candace/drop/frame_10_delay-0.1s.png" id="25_gn5u5"]
 [ext_resource type="PackedScene" uid="uid://b2m1rp3qnqbga" path="res://scenes/hud/tabletop.tscn" id="26_1utr4"]
+[ext_resource type="Texture2D" uid="uid://cn0y40hbc6eb2" path="res://assets/background/cinema.png" id="27_ay6mg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jr6bd"]
 animations = [{
@@ -121,9 +122,8 @@ animations = [{
 
 [node name="TestScene" parent="." node_paths=PackedStringArray("animated_sprite") instance=ExtResource("3_3iy7f")]
 z_index = 100
-position = Vector2(9, 0)
 next_level_scene = "uid://bitb8vhkjmwkn"
-opponent = "candace"
+opponent = "Candace"
 animated_sprite = NodePath("../AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -135,3 +135,4 @@ animation = &"draw"
 [node name="Tabletop" parent="." instance=ExtResource("26_1utr4")]
 z_index = -99
 position = Vector2(-53, 0)
+background_tex = ExtResource("27_ay6mg")

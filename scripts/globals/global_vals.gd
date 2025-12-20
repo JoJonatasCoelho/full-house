@@ -8,7 +8,14 @@ var dutched: bool = false
 var game_state: GameState.GameState = GameState.GameState.NORMAL_PLAY
 var next_video_path: String = ""
 var scene_after_video: String = ""
+var extra_cutscene: String
 
+func set_extra_cutscene(video_path: String) -> void:
+	extra_cutscene = video_path
+	
+func reset_extra_cutscene() -> void:
+	extra_cutscene = ""
+	
 func set_game_state(new_state: GameState.GameState) -> void:
 	game_state = new_state
 

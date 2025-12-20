@@ -123,8 +123,9 @@ script = ExtResource("1_62kxy")
 
 [node name="TestScene" parent="." node_paths=PackedStringArray("animated_sprite") instance=ExtResource("3_62kxy")]
 z_index = 100
+victory_video_path = "uid://bkeqtxk43pppj"
 next_level_scene = "uid://d2jf8b3meo7jx"
-opponent = "chor"
+opponent = "Chor"
 animated_sprite = NodePath("../AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

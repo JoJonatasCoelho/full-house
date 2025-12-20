@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://u8prst1obv1v"]
+[gd_scene load_steps=16 format=3 uid="uid://u8prst1obv1v"]
 
 [ext_resource type="Script" uid="uid://p5wjkjbu34jw" path="res://scripts/systems/dutch_manager.gd" id="1_06sp8"]
 [ext_resource type="Script" uid="uid://b4jv0s7ikhf34" path="res://scripts/systems/card_manager.gd" id="1_bfhv8"]
@@ -8,8 +8,75 @@
 [ext_resource type="Script" uid="uid://coendf2brak0u" path="res://scripts/systems/input_manager.gd" id="6_joecx"]
 [ext_resource type="Script" uid="uid://ct0v62m8poum5" path="res://scripts/systems/opponent_hand.gd" id="8_ej02d"]
 [ext_resource type="Texture2D" uid="uid://ck2u6xrl24hrf" path="res://assets/buttons/end-turn.png" id="8_ucqeg"]
+[ext_resource type="FontFile" uid="uid://d00xv2mk53qi1" path="res://assets/fonts/SMT_DevilSurvivor-Regular (1).ttf" id="9_j3vxy"]
 [ext_resource type="Texture2D" uid="uid://c7pr5k624a17b" path="res://assets/buttons/pixil-frame-0(36).png" id="9_q0k0a"]
 [ext_resource type="Texture2D" uid="uid://k1yv4eoost6v" path="res://assets/buttons/dutch.png" id="9_ucqeg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wjwi7"]
+font = ExtResource("9_j3vxy")
+font_size = 60
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_q0k0a"]
+resource_name = "intro"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-454, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(511.026, 552.159)]
+}
+
+[sub_resource type="Animation" id="Animation_j3vxy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1025.026, 552.15906)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wjwi7"]
+_data = {
+&"RESET": SubResource("Animation_j3vxy"),
+&"intro": SubResource("Animation_q0k0a")
+}
 
 [node name="TestScene" type="Node2D"]
 script = ExtResource("1_06sp8")
@@ -87,18 +154,20 @@ scale = Vector2(2.8614051, 2.920556)
 texture = ExtResource("9_ucqeg")
 
 [node name="Label" type="Label" parent="Control"]
+z_index = 100
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -0.5
-offset_top = -11.5
-offset_right = 0.5
-offset_bottom = 11.5
+offset_left = 340.526
+offset_top = 173.15906
+offset_right = 1648.5283
+offset_bottom = 296.15906
 grow_horizontal = 2
 grow_vertical = 2
+label_settings = SubResource("LabelSettings_wjwi7")
 
 [node name="ResultImage" type="TextureRect" parent="Control"]
 z_index = 100
@@ -126,6 +195,11 @@ texture = ExtResource("9_q0k0a")
 [node name="Deck" parent="." instance=ExtResource("4_nd4bu")]
 position = Vector2(95, 412.00003)
 scale = Vector2(1.0241928, 1.0241928)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wjwi7")
+}
 
 [connection signal="pressed" from="Control/EndTurn" to="." method="_on_end_turn_pressed"]
 [connection signal="pressed" from="Control/DutchButton" to="." method="_on_dutch_button_pressed"]

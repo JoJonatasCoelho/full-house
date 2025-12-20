@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://d2jf8b3meo7jx"]
+[gd_scene load_steps=57 format=3 uid="uid://d2jf8b3meo7jx"]
 
 [ext_resource type="PackedScene" uid="uid://u8prst1obv1v" path="res://scenes/levels/test_scene.tscn" id="3_mh5fu"]
 [ext_resource type="Texture2D" uid="uid://dw8jw6k10m56n" path="res://assets/characters/animations/derick/stand/frame_0_delay-0.2s.png" id="4_afeu0"]
@@ -33,10 +33,26 @@
 [ext_resource type="Texture2D" uid="uid://4ntwmrf2gp13" path="res://assets/characters/animations/derick/drop/frame_3_delay-0.08s.png" id="31_f5bem"]
 [ext_resource type="Texture2D" uid="uid://btx6w50qq826s" path="res://assets/characters/animations/derick/drop/frame_4_delay-0.08s.png" id="32_jbiv2"]
 [ext_resource type="Texture2D" uid="uid://cnbej20lt6yht" path="res://assets/characters/animations/derick/drop/frame_5_delay-0.08s.png" id="33_j1foo"]
+[ext_resource type="Texture2D" uid="uid://bo2al137qiovf" path="res://assets/characters/animations/derick/flames/frame_00_delay-0.2s.png" id="34_7vn8m"]
 [ext_resource type="Texture2D" uid="uid://mh86lfj35isi" path="res://assets/characters/animations/derick/drop/frame_6_delay-0.08s.png" id="34_uhym1"]
 [ext_resource type="Texture2D" uid="uid://b5dchy81ktwl0" path="res://assets/characters/animations/derick/drop/frame_7_delay-0.08s.png" id="35_h7u1y"]
+[ext_resource type="Texture2D" uid="uid://lijtlvxbhu0x" path="res://assets/characters/animations/derick/flames/frame_01_delay-0.2s.png" id="35_k8yvi"]
+[ext_resource type="Texture2D" uid="uid://dfnvpahvc1fw2" path="res://assets/characters/animations/derick/flames/frame_02_delay-0.1s.png" id="36_ax25e"]
 [ext_resource type="PackedScene" uid="uid://b2m1rp3qnqbga" path="res://scenes/hud/tabletop.tscn" id="36_mrrqs"]
+[ext_resource type="Texture2D" uid="uid://duibcugg66h1b" path="res://assets/characters/animations/derick/flames/frame_03_delay-0.1s.png" id="37_dpshi"]
 [ext_resource type="Texture2D" uid="uid://can8gbf5um76d" path="res://assets/background/background.png" id="37_mbeqw"]
+[ext_resource type="Texture2D" uid="uid://dj7gq5jvb21rw" path="res://assets/characters/animations/derick/flames/frame_04_delay-0.1s.png" id="38_vex0e"]
+[ext_resource type="Texture2D" uid="uid://bdp2ugtep0qfn" path="res://assets/characters/animations/derick/flames/frame_05_delay-0.05s.png" id="39_0w68y"]
+[ext_resource type="Texture2D" uid="uid://ch621hemj3sv3" path="res://assets/characters/animations/derick/flames/frame_06_delay-0.05s.png" id="40_rgyis"]
+[ext_resource type="Texture2D" uid="uid://cf7njsb2rrca4" path="res://assets/characters/animations/derick/flames/frame_07_delay-0.03s.png" id="41_admop"]
+[ext_resource type="Texture2D" uid="uid://4ay474sygjgb" path="res://assets/characters/animations/derick/flames/frame_08_delay-0.05s.png" id="42_2viav"]
+[ext_resource type="Texture2D" uid="uid://beu3y36v234od" path="res://assets/characters/animations/derick/flames/frame_09_delay-0.03s.png" id="43_j16b6"]
+[ext_resource type="Texture2D" uid="uid://d31bx2lmwgsi6" path="res://assets/characters/animations/derick/flames/frame_10_delay-0.13s.png" id="44_l321k"]
+[ext_resource type="Texture2D" uid="uid://clorf6wjf8s3e" path="res://assets/characters/animations/derick/flames/frame_11_delay-0.2s.png" id="45_fwmpb"]
+[ext_resource type="Texture2D" uid="uid://biouxhw8hxplc" path="res://assets/characters/animations/derick/flames/frame_12_delay-0.15s.png" id="46_kenv4"]
+[ext_resource type="Texture2D" uid="uid://qo7smimn1nty" path="res://assets/characters/animations/derick/flames/frame_13_delay-0.2s.png" id="47_qae7u"]
+[ext_resource type="Texture2D" uid="uid://jvpg3wosm78c" path="res://assets/characters/animations/derick/laugh/frame_0_delay-0.1s.png" id="48_dlu8r"]
+[ext_resource type="Texture2D" uid="uid://dspe2flcfledc" path="res://assets/characters/animations/derick/laugh/frame_1_delay-0.13s.png" id="49_sun8d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y3w8m"]
 animations = [{
@@ -147,6 +163,70 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 0.61,
+"texture": ExtResource("34_7vn8m")
+}, {
+"duration": 0.61,
+"texture": ExtResource("35_k8yvi")
+}, {
+"duration": 0.61,
+"texture": ExtResource("36_ax25e")
+}, {
+"duration": 0.61,
+"texture": ExtResource("37_dpshi")
+}, {
+"duration": 0.61,
+"texture": ExtResource("38_vex0e")
+}, {
+"duration": 0.61,
+"texture": ExtResource("39_0w68y")
+}, {
+"duration": 0.61,
+"texture": ExtResource("40_rgyis")
+}, {
+"duration": 0.61,
+"texture": ExtResource("41_admop")
+}, {
+"duration": 0.61,
+"texture": ExtResource("42_2viav")
+}, {
+"duration": 0.61,
+"texture": ExtResource("43_j16b6")
+}, {
+"duration": 0.61,
+"texture": ExtResource("44_l321k")
+}, {
+"duration": 0.61,
+"texture": ExtResource("45_fwmpb")
+}, {
+"duration": 0.61,
+"texture": ExtResource("46_kenv4")
+}, {
+"duration": 0.61,
+"texture": ExtResource("47_qae7u")
+}],
+"loop": false,
+"name": &"flames",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("48_dlu8r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_sun8d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_dlu8r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_sun8d")
+}],
+"loop": false,
+"name": &"laugh",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 1.21,
 "texture": ExtResource("4_afeu0")
 }, {
@@ -182,8 +262,9 @@ _data = {
 
 [node name="TestScene" parent="." node_paths=PackedStringArray("animated_sprite") instance=ExtResource("3_mh5fu")]
 z_index = 100
+victory_video_path = "uid://c7wxoh20fbrp0"
 next_level_scene = "uid://i47u67y7vpm"
-opponent = "derick"
+opponent = "Derick"
 animated_sprite = NodePath("../AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -191,8 +272,8 @@ z_index = 100
 position = Vector2(1182, 505)
 scale = Vector2(0.399, 0.399)
 sprite_frames = SubResource("SpriteFrames_y3w8m")
-animation = &"drop"
-frame = 7
+animation = &"laugh"
+frame = 3
 frame_progress = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -204,3 +285,15 @@ libraries = {
 z_index = -99
 position = Vector2(-53, 0)
 background_tex = ExtResource("37_mbeqw")
+
+[node name="TransitionLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="TransitionLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
