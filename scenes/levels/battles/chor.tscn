@@ -1,6 +1,6 @@
-[gd_scene load_steps=27 format=3 uid="uid://dj567yojex7wj"]
+[gd_scene load_steps=28 format=3 uid="uid://dj567yojex7wj"]
 
-[ext_resource type="Script" path="res://scripts/systems/battle.gd" id="1_62kxy"]
+[ext_resource type="Script" uid="uid://basjcsbrbvrqm" path="res://scripts/systems/battle.gd" id="1_62kxy"]
 [ext_resource type="PackedScene" uid="uid://u8prst1obv1v" path="res://scenes/levels/test_scene.tscn" id="3_62kxy"]
 [ext_resource type="Texture2D" uid="uid://b0525pndsca5i" path="res://assets/characters/animations/chor/stand/frame_0_delay-0.2s.png" id="5_mxkj0"]
 [ext_resource type="Texture2D" uid="uid://dff7k2sw13422" path="res://assets/characters/animations/chor/draw-and-drop/frame_00_delay-0.08s.png" id="5_yd0we"]
@@ -22,7 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://csfkj515qpjop" path="res://assets/characters/animations/chor/draw-and-drop/frame_15_delay-0.05s.png" id="20_tasy6"]
 [ext_resource type="Texture2D" uid="uid://cptrdgveil7c2" path="res://assets/characters/animations/chor/draw-and-drop/frame_16_delay-0.05s.png" id="21_oeqpy"]
 [ext_resource type="Texture2D" uid="uid://cl8vx52ptxnxp" path="res://assets/characters/animations/chor/draw-and-drop/frame_17_delay-0.05s.png" id="22_as0nj"]
-[ext_resource type="PackedScene" uid="uid://diooybfog1vgj" path="res://scenes/hud/tabletop.tscn" id="23_7torw"]
+[ext_resource type="PackedScene" uid="uid://b2m1rp3qnqbga" path="res://scenes/hud/tabletop.tscn" id="23_7torw"]
+[ext_resource type="Texture2D" uid="uid://bhb0278dxnslv" path="res://assets/background/classroom.png" id="24_yd0we"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ecrme"]
 animations = [{
@@ -128,8 +129,8 @@ animated_sprite = NodePath("../AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 100
-position = Vector2(1642.0001, 599)
-scale = Vector2(0.5958775, 0.5958775)
+position = Vector2(1176, 478.99997)
+scale = Vector2(0.39912453, 0.39912453)
 sprite_frames = SubResource("SpriteFrames_ecrme")
 animation = &"draw"
 frame = 17
@@ -142,3 +143,5 @@ libraries = {
 
 [node name="Tabletop" parent="." instance=ExtResource("23_7torw")]
 z_index = -99
+position = Vector2(-53, 0)
+background_tex = ExtResource("24_yd0we")

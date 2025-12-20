@@ -2,8 +2,10 @@ extends Node
 
 class_name Hand
 
-@onready var center_screen_x = get_viewport().size.x / 3
-@onready var hand_y_position = get_viewport().size.y / 1.2
+@onready var screen_size = get_viewport().get_visible_rect().size
+
+@onready var center_screen_x = screen_size.x / 3
+@onready var hand_y_position = screen_size.y * 0.9
 @onready var card_width = center_screen_x / 6
 
 var hand:Array[Card]

@@ -26,6 +26,7 @@ const TEX_DEFEAT: Texture2D = preload("res://assets/final_game/defeat.png")
 const TEX_DRAW: Texture = preload("res://assets/buttons/draw.png")
 
 func _ready() -> void:
+	print(get_viewport().size.y)
 	animated_sprite.play("stand")
 	battle_time.one_shot = true
 	battle_time.wait_time = 1.0

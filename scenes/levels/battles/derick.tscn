@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://d2jf8b3meo7jx"]
+[gd_scene load_steps=41 format=3 uid="uid://d2jf8b3meo7jx"]
 
 [ext_resource type="PackedScene" uid="uid://u8prst1obv1v" path="res://scenes/levels/test_scene.tscn" id="3_mh5fu"]
 [ext_resource type="Texture2D" uid="uid://dw8jw6k10m56n" path="res://assets/characters/animations/derick/stand/frame_0_delay-0.2s.png" id="4_afeu0"]
@@ -35,7 +35,8 @@
 [ext_resource type="Texture2D" uid="uid://cnbej20lt6yht" path="res://assets/characters/animations/derick/drop/frame_5_delay-0.08s.png" id="33_j1foo"]
 [ext_resource type="Texture2D" uid="uid://mh86lfj35isi" path="res://assets/characters/animations/derick/drop/frame_6_delay-0.08s.png" id="34_uhym1"]
 [ext_resource type="Texture2D" uid="uid://b5dchy81ktwl0" path="res://assets/characters/animations/derick/drop/frame_7_delay-0.08s.png" id="35_h7u1y"]
-[ext_resource type="PackedScene" uid="uid://diooybfog1vgj" path="res://scenes/hud/tabletop.tscn" id="36_mrrqs"]
+[ext_resource type="PackedScene" uid="uid://b2m1rp3qnqbga" path="res://scenes/hud/tabletop.tscn" id="36_mrrqs"]
+[ext_resource type="Texture2D" uid="uid://can8gbf5um76d" path="res://assets/background/background.png" id="37_mbeqw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y3w8m"]
 animations = [{
@@ -187,8 +188,8 @@ animated_sprite = NodePath("../AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 100
-position = Vector2(1645, 601.00006)
-scale = Vector2(0.62631464, 0.62631464)
+position = Vector2(1182, 505)
+scale = Vector2(0.399, 0.399)
 sprite_frames = SubResource("SpriteFrames_y3w8m")
 animation = &"drop"
 frame = 7
@@ -201,4 +202,5 @@ libraries = {
 
 [node name="Tabletop" parent="." instance=ExtResource("36_mrrqs")]
 z_index = -99
-position = Vector2(0, -3)
+position = Vector2(-53, 0)
+background_tex = ExtResource("37_mbeqw")

@@ -13,6 +13,7 @@ config_version=5
 config/name="Full house"
 run/main_scene="uid://cx3v1bl5jbxun"
 config/features=PackedStringArray("4.5", "Forward Plus")
+boot_splash/bg_color=Color(0.57226646, 0.04695435, 0.33356047, 1)
 config/icon="res://icon.svg"
 
 [autoload]
@@ -25,14 +26,20 @@ Global="*res://scripts/globals/global_vals.gd"
 window/size/viewport_width=1366
 window/size/viewport_height=768
 window/size/mode=3
-window/size/resizable=false
 window/subwindows/embed_subwindows=false
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 window/vsync/vsync_mode=0
 
 [dotnet]
 
 project/assembly_name="Full house"
 
+[memory]
+
+limits/message_queue/max_size_mb=1171
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_etc2_astc=true

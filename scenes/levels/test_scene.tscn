@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://b4jv0s7ikhf34" path="res://scripts/systems/card_manager.gd" id="1_bfhv8"]
 [ext_resource type="PackedScene" uid="uid://bba86c5flxe07" path="res://scenes/systems/player_hand.tscn" id="2_06sp8"]
 [ext_resource type="PackedScene" uid="uid://dj4lndye1v6t8" path="res://scenes/hud/card_slot.tscn" id="3_kljt5"]
-[ext_resource type="PackedScene" uid="uid://biux6ecqebopw" path="res://scenes/hud/deck.tscn" id="4_nd4bu"]
+[ext_resource type="PackedScene" uid="uid://c10mwc4af15pu" path="res://scenes/hud/deck.tscn" id="4_nd4bu"]
 [ext_resource type="Script" uid="uid://coendf2brak0u" path="res://scripts/systems/input_manager.gd" id="6_joecx"]
 [ext_resource type="Script" uid="uid://ct0v62m8poum5" path="res://scripts/systems/opponent_hand.gd" id="8_ej02d"]
 [ext_resource type="Texture2D" uid="uid://ck2u6xrl24hrf" path="res://assets/buttons/end-turn.png" id="8_ucqeg"]
@@ -24,7 +24,8 @@ position = Vector2(-25, 0)
 script = ExtResource("1_bfhv8")
 
 [node name="CardSlot" parent="." instance=ExtResource("3_kljt5")]
-position = Vector2(449, 441)
+position = Vector2(405, 408)
+scale = Vector2(0.9454088, 0.9454088)
 
 [node name="OpponentHand" parent="." instance=ExtResource("2_06sp8")]
 script = ExtResource("8_ej02d")
@@ -34,10 +35,11 @@ script = ExtResource("8_ej02d")
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -2.0
-offset_top = 24.0
-offset_right = 1367.0
-offset_bottom = 782.0
+offset_left = 3.9999995
+offset_top = 138.0
+offset_right = 1373.0
+offset_bottom = 896.0
+scale = Vector2(0.6653584, 0.6653584)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -101,11 +103,18 @@ grow_vertical = 2
 [node name="ResultImage" type="TextureRect" parent="Control"]
 z_index = 100
 custom_minimum_size = Vector2(5, 2)
-layout_mode = 0
-offset_left = 659.00006
-offset_top = 211.0
-offset_right = 2195.0
-offset_bottom = 1747.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.73300004
+anchor_top = 0.48600003
+anchor_right = 0.73300004
+anchor_bottom = 0.48600003
+offset_left = -282.0614
+offset_top = -282.7199
+offset_right = 1253.9385
+offset_bottom = 1253.28
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.36703265, 0.36799267)
 
 [node name="Sprite2D" type="Sprite2D" parent="Control"]
@@ -115,7 +124,8 @@ scale = Vector2(0.2710337, 0.2710337)
 texture = ExtResource("9_q0k0a")
 
 [node name="Deck" parent="." instance=ExtResource("4_nd4bu")]
-position = Vector2(139, 445.00003)
+position = Vector2(95, 412.00003)
+scale = Vector2(1.0241928, 1.0241928)
 
 [connection signal="pressed" from="Control/EndTurn" to="." method="_on_end_turn_pressed"]
 [connection signal="pressed" from="Control/DutchButton" to="." method="_on_dutch_button_pressed"]
