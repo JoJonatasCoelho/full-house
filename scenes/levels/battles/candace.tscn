@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://i47u67y7vpm"]
+[gd_scene load_steps=29 format=3 uid="uid://i47u67y7vpm"]
 
 [ext_resource type="Texture2D" uid="uid://bhb0278dxnslv" path="res://assets/background/classroom.png" id="1_wfvy4"]
 [ext_resource type="Texture2D" uid="uid://bs1h3lstxsc12" path="res://assets/background/table.png" id="2_iqk5k"]
@@ -15,7 +15,18 @@
 [ext_resource type="Texture2D" uid="uid://c0g7wrc07bqhc" path="res://assets/characters/animations/candace/draw/frame_09_delay-0.1s.png" id="13_1l37n"]
 [ext_resource type="Texture2D" uid="uid://cgvwdjqkofyfx" path="res://assets/characters/animations/candace/draw/frame_10_delay-0.1s.png" id="14_1utr4"]
 [ext_resource type="Texture2D" uid="uid://4ky1fck50n5v" path="res://assets/characters/animations/candace/stand/frame_0_delay-0.2s.png" id="15_ay6mg"]
+[ext_resource type="Texture2D" uid="uid://bec6opawhf2p7" path="res://assets/characters/animations/candace/drop/frame_00_delay-0.1s.png" id="15_xixhs"]
+[ext_resource type="Texture2D" uid="uid://cbrphxe6xuy12" path="res://assets/characters/animations/candace/drop/frame_01_delay-0.1s.png" id="16_jr6bd"]
 [ext_resource type="Texture2D" uid="uid://bd5cmtw0ufydl" path="res://assets/characters/animations/candace/stand/frame_1_delay-0.15s.png" id="16_xixhs"]
+[ext_resource type="Texture2D" uid="uid://dixrk2m68k5ul" path="res://assets/characters/animations/candace/drop/frame_02_delay-0.1s.png" id="17_t4mrq"]
+[ext_resource type="Texture2D" uid="uid://dbyf45xsm2hod" path="res://assets/characters/animations/candace/drop/frame_03_delay-0.1s.png" id="18_pip3b"]
+[ext_resource type="Texture2D" uid="uid://0wuo1nt5k08g" path="res://assets/characters/animations/candace/drop/frame_04_delay-0.1s.png" id="19_c0v5j"]
+[ext_resource type="Texture2D" uid="uid://b8fhdbxmyesd6" path="res://assets/characters/animations/candace/drop/frame_05_delay-0.08s.png" id="20_x210t"]
+[ext_resource type="Texture2D" uid="uid://sb324oyviif1" path="res://assets/characters/animations/candace/drop/frame_06_delay-0.1s.png" id="21_5ebs2"]
+[ext_resource type="Texture2D" uid="uid://c0osyoestcksi" path="res://assets/characters/animations/candace/drop/frame_07_delay-0.1s.png" id="22_cmxc0"]
+[ext_resource type="Texture2D" uid="uid://c4ukvvmdd1e32" path="res://assets/characters/animations/candace/drop/frame_08_delay-0.1s.png" id="23_1x5tm"]
+[ext_resource type="Texture2D" uid="uid://bw1n6flqh3ml7" path="res://assets/characters/animations/candace/drop/frame_09_delay-0.1s.png" id="24_k3dio"]
+[ext_resource type="Texture2D" uid="uid://bvkabwvk0wqyh" path="res://assets/characters/animations/candace/drop/frame_10_delay-0.1s.png" id="25_gn5u5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jr6bd"]
 animations = [{
@@ -53,8 +64,46 @@ animations = [{
 "duration": 1.01,
 "texture": ExtResource("14_1utr4")
 }],
-"loop": true,
+"loop": false,
 "name": &"draw",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.01,
+"texture": ExtResource("15_xixhs")
+}, {
+"duration": 1.01,
+"texture": ExtResource("16_jr6bd")
+}, {
+"duration": 1.01,
+"texture": ExtResource("17_t4mrq")
+}, {
+"duration": 1.01,
+"texture": ExtResource("18_pip3b")
+}, {
+"duration": 1.01,
+"texture": ExtResource("19_c0v5j")
+}, {
+"duration": 1.01,
+"texture": ExtResource("20_x210t")
+}, {
+"duration": 1.01,
+"texture": ExtResource("21_5ebs2")
+}, {
+"duration": 1.01,
+"texture": ExtResource("22_cmxc0")
+}, {
+"duration": 1.01,
+"texture": ExtResource("23_1x5tm")
+}, {
+"duration": 1.01,
+"texture": ExtResource("24_k3dio")
+}, {
+"duration": 1.01,
+"texture": ExtResource("25_gn5u5")
+}],
+"loop": false,
+"name": &"drop",
 "speed": 5.0
 }, {
 "frames": [{
@@ -81,12 +130,14 @@ position = Vector2(503.98096, 497.0127)
 scale = Vector2(2.8874404, 3.3930707)
 texture = ExtResource("2_iqk5k")
 
-[node name="TestScene" parent="." instance=ExtResource("3_3iy7f")]
+[node name="TestScene" parent="." node_paths=PackedStringArray("animated_sprite") instance=ExtResource("3_3iy7f")]
 z_index = 100
+next_level_scene = "uid://bitb8vhkjmwkn"
 opponent = "candace"
+animated_sprite = NodePath("../AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1114, 458)
+position = Vector2(1630, 655)
+scale = Vector2(0.73686, 0.73686)
 sprite_frames = SubResource("SpriteFrames_jr6bd")
 animation = &"draw"
-frame_progress = 0.20488797

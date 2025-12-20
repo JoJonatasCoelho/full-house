@@ -204,6 +204,7 @@ texture = ExtResource("2_nsaqo")
 
 [node name="TestScene" parent="." node_paths=PackedStringArray("animated_sprite") instance=ExtResource("3_mh5fu")]
 z_index = 100
+next_level_scene = "uid://i47u67y7vpm"
 opponent = "derick"
 animated_sprite = NodePath("../AnimatedSprite2D")
 
