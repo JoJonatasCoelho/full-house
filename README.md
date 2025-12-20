@@ -39,7 +39,7 @@ Em resposta, nasce a **Diabo Bets**, um grupo fundado por estudantes marginaliza
 ### 🃏 Preparação do jogo
 - O jogo utiliza um baralho comum, sem curingas.
 - Cada jogador recebe 4 cartas, todas viradas para baixo.
-- No início, o jogador pode olhar apenas 2 dessas cartas e deve memorizá-las.
+- No início, o jogador deve olhar apenas 2 dessas cartas e deve memorizá-las.
 - As cartas não vistas permanecem ocultas durante a partida, exigindo atenção e memória.
 
 ### 🔄 Fluxo de uma rodada
@@ -49,6 +49,14 @@ Em resposta, nasce a **Diabo Bets**, um grupo fundado por estudantes marginaliza
     - **Descartar diretamente a carta comprada**.
 3. Durante sua rodada, o jogador pode também dar Dutch, que encerra o jogo e faz os jogadores mostrarem suas mãos.
 4. O objetivo é **terminar a partida com a menor soma de valores possível**.
+
+### ✂️ Corte
+O **corte** é uma jogada rápida que recompensa atenção e reflexos:
+
+- Se o jogador for rápido o suficiente, ele pode **descartar duas cartas iguais da própria mão ao mesmo tempo** em uma só rodada.
+- Durante a sua rodada, se o oponente tiver **acabado de descartar uma carta igual a uma que você possui**, você pode:
+  - **Não puxar uma carta do baralho**, e
+  - **Descartar imediatamente a carta igual da sua mão**.
 
 ### 🔢 Valores das cartas
 - **Ás (A)** vale **1**
