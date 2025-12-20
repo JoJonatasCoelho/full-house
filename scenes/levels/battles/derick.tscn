@@ -1,7 +1,5 @@
-[gd_scene load_steps=41 format=3 uid="uid://d2jf8b3meo7jx"]
+[gd_scene load_steps=40 format=3 uid="uid://d2jf8b3meo7jx"]
 
-[ext_resource type="Texture2D" uid="uid://bhb0278dxnslv" path="res://assets/background/classroom.png" id="1_h5mtp"]
-[ext_resource type="Texture2D" uid="uid://bs1h3lstxsc12" path="res://assets/background/table.png" id="2_nsaqo"]
 [ext_resource type="PackedScene" uid="uid://u8prst1obv1v" path="res://scenes/levels/test_scene.tscn" id="3_mh5fu"]
 [ext_resource type="Texture2D" uid="uid://dw8jw6k10m56n" path="res://assets/characters/animations/derick/stand/frame_0_delay-0.2s.png" id="4_afeu0"]
 [ext_resource type="Texture2D" uid="uid://cavherc4jf4nm" path="res://assets/characters/animations/derick/draw/frame_00_delay-0.2s.png" id="4_c2uov"]
@@ -37,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://cnbej20lt6yht" path="res://assets/characters/animations/derick/drop/frame_5_delay-0.08s.png" id="33_j1foo"]
 [ext_resource type="Texture2D" uid="uid://mh86lfj35isi" path="res://assets/characters/animations/derick/drop/frame_6_delay-0.08s.png" id="34_uhym1"]
 [ext_resource type="Texture2D" uid="uid://b5dchy81ktwl0" path="res://assets/characters/animations/derick/drop/frame_7_delay-0.08s.png" id="35_h7u1y"]
+[ext_resource type="PackedScene" uid="uid://diooybfog1vgj" path="res://scenes/hud/tabletop.tscn" id="36_mrrqs"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y3w8m"]
 animations = [{
@@ -163,22 +162,10 @@ resource_name = "intro"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Table:position")
+tracks/0/path = NodePath("TestScene:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TestScene:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(),
 "transitions": PackedFloat32Array(),
 "update": 0,
@@ -192,16 +179,6 @@ _data = {
 
 [node name="Derick" type="Node2D"]
 
-[node name="Classroom" type="Sprite2D" parent="."]
-position = Vector2(969.981, 494.0127)
-scale = Vector2(2.9030535, 3.3778484)
-texture = ExtResource("1_h5mtp")
-
-[node name="Table" type="Sprite2D" parent="."]
-position = Vector2(503.98096, 497.0127)
-scale = Vector2(2.8874404, 3.3930707)
-texture = ExtResource("2_nsaqo")
-
 [node name="TestScene" parent="." node_paths=PackedStringArray("animated_sprite") instance=ExtResource("3_mh5fu")]
 z_index = 100
 next_level_scene = "uid://i47u67y7vpm"
@@ -209,7 +186,7 @@ opponent = "derick"
 animated_sprite = NodePath("../AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1706.9999, 616)
+position = Vector2(1641.9999, 615)
 scale = Vector2(0.6486854, 0.6486854)
 sprite_frames = SubResource("SpriteFrames_y3w8m")
 animation = &"drop"
@@ -220,3 +197,6 @@ frame_progress = 1.0
 libraries = {
 &"": SubResource("AnimationLibrary_6jhgv")
 }
+
+[node name="Tabletop" parent="." instance=ExtResource("36_mrrqs")]
+z_index = -99

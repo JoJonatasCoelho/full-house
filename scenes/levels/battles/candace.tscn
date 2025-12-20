@@ -1,7 +1,5 @@
-[gd_scene load_steps=29 format=3 uid="uid://i47u67y7vpm"]
+[gd_scene load_steps=28 format=3 uid="uid://i47u67y7vpm"]
 
-[ext_resource type="Texture2D" uid="uid://bhb0278dxnslv" path="res://assets/background/classroom.png" id="1_wfvy4"]
-[ext_resource type="Texture2D" uid="uid://bs1h3lstxsc12" path="res://assets/background/table.png" id="2_iqk5k"]
 [ext_resource type="PackedScene" uid="uid://u8prst1obv1v" path="res://scenes/levels/test_scene.tscn" id="3_3iy7f"]
 [ext_resource type="Texture2D" uid="uid://bqdowp3okkk62" path="res://assets/characters/animations/candace/draw/frame_00_delay-0.1s.png" id="4_qspdo"]
 [ext_resource type="Texture2D" uid="uid://c4jeskgu7ridr" path="res://assets/characters/animations/candace/draw/frame_01_delay-0.1s.png" id="5_c2dh7"]
@@ -27,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://c4ukvvmdd1e32" path="res://assets/characters/animations/candace/drop/frame_08_delay-0.1s.png" id="23_1x5tm"]
 [ext_resource type="Texture2D" uid="uid://bw1n6flqh3ml7" path="res://assets/characters/animations/candace/drop/frame_09_delay-0.1s.png" id="24_k3dio"]
 [ext_resource type="Texture2D" uid="uid://bvkabwvk0wqyh" path="res://assets/characters/animations/candace/drop/frame_10_delay-0.1s.png" id="25_gn5u5"]
+[ext_resource type="PackedScene" uid="uid://diooybfog1vgj" path="res://scenes/hud/tabletop.tscn" id="26_1utr4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jr6bd"]
 animations = [{
@@ -120,16 +119,6 @@ animations = [{
 
 [node name="Chor" type="Node2D"]
 
-[node name="Classroom" type="Sprite2D" parent="."]
-position = Vector2(969.981, 494.0127)
-scale = Vector2(2.9030535, 3.3778484)
-texture = ExtResource("1_wfvy4")
-
-[node name="Table" type="Sprite2D" parent="."]
-position = Vector2(503.98096, 497.0127)
-scale = Vector2(2.8874404, 3.3930707)
-texture = ExtResource("2_iqk5k")
-
 [node name="TestScene" parent="." node_paths=PackedStringArray("animated_sprite") instance=ExtResource("3_3iy7f")]
 z_index = 100
 next_level_scene = "uid://bitb8vhkjmwkn"
@@ -137,7 +126,10 @@ opponent = "candace"
 animated_sprite = NodePath("../AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1630, 655)
-scale = Vector2(0.73686, 0.73686)
+position = Vector2(1636, 611)
+scale = Vector2(0.63112044, 0.63112044)
 sprite_frames = SubResource("SpriteFrames_jr6bd")
 animation = &"draw"
+
+[node name="Tabletop" parent="." instance=ExtResource("26_1utr4")]
+z_index = -99

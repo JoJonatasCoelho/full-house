@@ -1,8 +1,6 @@
-[gd_scene load_steps=28 format=3 uid="uid://dj567yojex7wj"]
+[gd_scene load_steps=27 format=3 uid="uid://dj567yojex7wj"]
 
-[ext_resource type="Script" uid="uid://basjcsbrbvrqm" path="res://scripts/systems/battle.gd" id="1_62kxy"]
-[ext_resource type="Texture2D" uid="uid://bhb0278dxnslv" path="res://assets/background/classroom.png" id="1_pk30b"]
-[ext_resource type="Texture2D" uid="uid://bs1h3lstxsc12" path="res://assets/background/table.png" id="2_e705r"]
+[ext_resource type="Script" path="res://scripts/systems/battle.gd" id="1_62kxy"]
 [ext_resource type="PackedScene" uid="uid://u8prst1obv1v" path="res://scenes/levels/test_scene.tscn" id="3_62kxy"]
 [ext_resource type="Texture2D" uid="uid://b0525pndsca5i" path="res://assets/characters/animations/chor/stand/frame_0_delay-0.2s.png" id="5_mxkj0"]
 [ext_resource type="Texture2D" uid="uid://dff7k2sw13422" path="res://assets/characters/animations/chor/draw-and-drop/frame_00_delay-0.08s.png" id="5_yd0we"]
@@ -24,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://csfkj515qpjop" path="res://assets/characters/animations/chor/draw-and-drop/frame_15_delay-0.05s.png" id="20_tasy6"]
 [ext_resource type="Texture2D" uid="uid://cptrdgveil7c2" path="res://assets/characters/animations/chor/draw-and-drop/frame_16_delay-0.05s.png" id="21_oeqpy"]
 [ext_resource type="Texture2D" uid="uid://cl8vx52ptxnxp" path="res://assets/characters/animations/chor/draw-and-drop/frame_17_delay-0.05s.png" id="22_as0nj"]
+[ext_resource type="PackedScene" uid="uid://diooybfog1vgj" path="res://scenes/hud/tabletop.tscn" id="23_7torw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ecrme"]
 animations = [{
@@ -103,22 +102,10 @@ resource_name = "intro"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Table:position")
+tracks/0/path = NodePath("TestScene:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TestScene:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(),
 "transitions": PackedFloat32Array(),
 "update": 0,
@@ -133,16 +120,6 @@ _data = {
 [node name="Chor" type="Node2D"]
 script = ExtResource("1_62kxy")
 
-[node name="Classroom" type="Sprite2D" parent="."]
-position = Vector2(1035.981, 494.0127)
-scale = Vector2(2.9030535, 3.3778484)
-texture = ExtResource("1_pk30b")
-
-[node name="Table" type="Sprite2D" parent="."]
-position = Vector2(569.98096, 497.0127)
-scale = Vector2(2.8874404, 3.3930707)
-texture = ExtResource("2_e705r")
-
 [node name="TestScene" parent="." node_paths=PackedStringArray("animated_sprite") instance=ExtResource("3_62kxy")]
 z_index = 100
 next_level_scene = "uid://d2jf8b3meo7jx"
@@ -150,8 +127,8 @@ opponent = "chor"
 animated_sprite = NodePath("../AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1706.9999, 616)
-scale = Vector2(0.6486854, 0.6486854)
+position = Vector2(1635, 602)
+scale = Vector2(0.5958775, 0.5958775)
 sprite_frames = SubResource("SpriteFrames_ecrme")
 animation = &"draw"
 frame = 17
@@ -161,3 +138,6 @@ frame_progress = 1.0
 libraries = {
 &"": SubResource("AnimationLibrary_6jhgv")
 }
+
+[node name="Tabletop" parent="." instance=ExtResource("23_7torw")]
+z_index = -99

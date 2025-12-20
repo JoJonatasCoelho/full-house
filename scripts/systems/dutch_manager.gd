@@ -23,6 +23,7 @@ var jack_selection_1: Card = null
 
 const TEX_VICTORY: Texture2D = preload("res://assets/final_game/victory.png")
 const TEX_DEFEAT: Texture2D = preload("res://assets/final_game/defeat.png")
+const TEX_DRAW: Texture = preload("res://assets/buttons/draw.png")
 
 func _ready() -> void:
 	animated_sprite.play("stand")
@@ -104,7 +105,7 @@ func declare_dutch() -> void:
 	elif player_score > opponent_score:
 		show_result(TEX_DEFEAT, false)
 	else:
-		show_result(TEX_DEFEAT, false) 
+		show_result(TEX_DRAW, false) 
 
 func show_result(tex: Texture2D, is_victory: bool) -> void:
 	result_image.texture = tex

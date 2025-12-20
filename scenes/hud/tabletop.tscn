@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://diooybfog1vgj"]
+
+[ext_resource type="Texture2D" uid="uid://bhb0278dxnslv" path="res://assets/background/classroom.png" id="1_gsb8b"]
+[ext_resource type="Texture2D" uid="uid://bs1h3lstxsc12" path="res://assets/background/table.png" id="2_wohco"]
+
+[node name="Tabletop" type="Node2D"]
+
+[node name="Table" type="Sprite2D" parent="."]
+position = Vector2(958.3236, 492)
+scale = Vector2(2.8135114, 3.4388893)
+texture = ExtResource("2_wohco")
+
+[node name="Table2" type="Sprite2D" parent="."]
+position = Vector2(-114, 495.00003)
+scale = Vector2(0.55726135, 3.4388893)
+texture = ExtResource("2_wohco")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = 30
+offset_left = 1371.0
+offset_top = 2.9999695
+offset_right = 2011.0
+offset_bottom = 362.99997
+scale = Vector2(1.8617399, 3.053414)
+texture = ExtResource("1_gsb8b")

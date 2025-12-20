@@ -1,13 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://u8prst1obv1v"]
+[gd_scene load_steps=11 format=3 uid="uid://u8prst1obv1v"]
 
 [ext_resource type="Script" uid="uid://p5wjkjbu34jw" path="res://scripts/systems/dutch_manager.gd" id="1_06sp8"]
 [ext_resource type="Script" uid="uid://b4jv0s7ikhf34" path="res://scripts/systems/card_manager.gd" id="1_bfhv8"]
 [ext_resource type="PackedScene" uid="uid://bba86c5flxe07" path="res://scenes/systems/player_hand.tscn" id="2_06sp8"]
 [ext_resource type="PackedScene" uid="uid://dj4lndye1v6t8" path="res://scenes/hud/card_slot.tscn" id="3_kljt5"]
-[ext_resource type="PackedScene" uid="uid://c10mwc4af15pu" path="res://scenes/hud/deck.tscn" id="4_nd4bu"]
+[ext_resource type="PackedScene" uid="uid://biux6ecqebopw" path="res://scenes/hud/deck.tscn" id="4_nd4bu"]
 [ext_resource type="Script" uid="uid://coendf2brak0u" path="res://scripts/systems/input_manager.gd" id="6_joecx"]
 [ext_resource type="Script" uid="uid://ct0v62m8poum5" path="res://scripts/systems/opponent_hand.gd" id="8_ej02d"]
 [ext_resource type="Texture2D" uid="uid://ck2u6xrl24hrf" path="res://assets/buttons/end-turn.png" id="8_ucqeg"]
+[ext_resource type="Texture2D" uid="uid://c7pr5k624a17b" path="res://assets/buttons/pixil-frame-0(36).png" id="9_q0k0a"]
 [ext_resource type="Texture2D" uid="uid://k1yv4eoost6v" path="res://assets/buttons/dutch.png" id="9_ucqeg"]
 
 [node name="TestScene" type="Node2D"]
@@ -19,10 +20,11 @@ script = ExtResource("1_06sp8")
 script = ExtResource("6_joecx")
 
 [node name="CardManager" type="Node2D" parent="."]
+position = Vector2(-25, 0)
 script = ExtResource("1_bfhv8")
 
 [node name="CardSlot" parent="." instance=ExtResource("3_kljt5")]
-position = Vector2(440, 437)
+position = Vector2(449, 441)
 
 [node name="OpponentHand" parent="." instance=ExtResource("2_06sp8")]
 script = ExtResource("8_ej02d")
@@ -40,12 +42,13 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="EndTurn" type="Button" parent="Control"]
+z_index = 10
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.018991966
-anchor_top = -0.07651715
-anchor_right = 1.0562454
-anchor_bottom = 1.8693931
+anchor_left = 0.016800588
+anchor_top = -0.088390484
+anchor_right = 1.054054
+anchor_bottom = 1.8575197
 offset_left = 35.0
 offset_top = 216.0
 offset_right = 159.0
@@ -60,16 +63,17 @@ scale = Vector2(2.2245522, 2.733149)
 texture = ExtResource("8_ucqeg")
 
 [node name="DutchButton" type="Button" parent="Control"]
+z_index = 10
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -608.5
-offset_top = 143.0
-offset_right = 1487.2583
-offset_bottom = 1687.0
+offset_left = -616.5
+offset_top = 153.0
+offset_right = 1479.2583
+offset_bottom = 1697.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.0782533, 0.07666841)
@@ -104,8 +108,14 @@ offset_right = 2195.0
 offset_bottom = 1747.0
 scale = Vector2(0.36703265, 0.36799267)
 
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+z_index = -99
+position = Vector2(344, 392)
+scale = Vector2(0.2710337, 0.2710337)
+texture = ExtResource("9_q0k0a")
+
 [node name="Deck" parent="." instance=ExtResource("4_nd4bu")]
-position = Vector2(156.00002, 446.00003)
+position = Vector2(139, 445.00003)
 
 [connection signal="pressed" from="Control/EndTurn" to="." method="_on_end_turn_pressed"]
 [connection signal="pressed" from="Control/DutchButton" to="." method="_on_dutch_button_pressed"]
