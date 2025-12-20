@@ -1,14 +1,91 @@
-[gd_scene load_steps=8 format=3 uid="uid://dj567yojex7wj"]
+[gd_scene load_steps=28 format=3 uid="uid://dj567yojex7wj"]
 
 [ext_resource type="Script" uid="uid://basjcsbrbvrqm" path="res://scripts/systems/battle.gd" id="1_62kxy"]
 [ext_resource type="Texture2D" uid="uid://bhb0278dxnslv" path="res://assets/background/classroom.png" id="1_pk30b"]
 [ext_resource type="Texture2D" uid="uid://bs1h3lstxsc12" path="res://assets/background/table.png" id="2_e705r"]
 [ext_resource type="PackedScene" uid="uid://u8prst1obv1v" path="res://scenes/levels/test_scene.tscn" id="3_62kxy"]
 [ext_resource type="Texture2D" uid="uid://b0525pndsca5i" path="res://assets/characters/animations/chor/stand/frame_0_delay-0.2s.png" id="5_mxkj0"]
+[ext_resource type="Texture2D" uid="uid://dff7k2sw13422" path="res://assets/characters/animations/chor/draw-and-drop/frame_00_delay-0.08s.png" id="5_yd0we"]
+[ext_resource type="Texture2D" uid="uid://co7vcskqrwi1m" path="res://assets/characters/animations/chor/draw-and-drop/frame_01_delay-0.08s.png" id="6_1cl3n"]
 [ext_resource type="Texture2D" uid="uid://dbq5ipmylqm3u" path="res://assets/characters/animations/chor/stand/frame_1_delay-0.2s.png" id="6_6jhgv"]
+[ext_resource type="Texture2D" uid="uid://b8oilpfclnv3n" path="res://assets/characters/animations/chor/draw-and-drop/frame_02_delay-0.08s.png" id="7_mfrop"]
+[ext_resource type="Texture2D" uid="uid://b20447xy3vj43" path="res://assets/characters/animations/chor/draw-and-drop/frame_03_delay-0.05s.png" id="8_4twp7"]
+[ext_resource type="Texture2D" uid="uid://rl58sagxt60y" path="res://assets/characters/animations/chor/draw-and-drop/frame_04_delay-0.05s.png" id="9_oe5uw"]
+[ext_resource type="Texture2D" uid="uid://b6a5ri631mpnl" path="res://assets/characters/animations/chor/draw-and-drop/frame_05_delay-0.05s.png" id="10_5ev3e"]
+[ext_resource type="Texture2D" uid="uid://cmfo5j2o85rhw" path="res://assets/characters/animations/chor/draw-and-drop/frame_06_delay-0.1s.png" id="11_g6ve7"]
+[ext_resource type="Texture2D" uid="uid://8yh0te4ofyip" path="res://assets/characters/animations/chor/draw-and-drop/frame_07_delay-0.1s.png" id="12_l5od3"]
+[ext_resource type="Texture2D" uid="uid://d10x7n0pbr6wa" path="res://assets/characters/animations/chor/draw-and-drop/frame_08_delay-0.1s.png" id="13_a4ciy"]
+[ext_resource type="Texture2D" uid="uid://exi7b160bcyl" path="res://assets/characters/animations/chor/draw-and-drop/frame_09_delay-0.05s.png" id="14_0g2b1"]
+[ext_resource type="Texture2D" uid="uid://mxxy085pbdx1" path="res://assets/characters/animations/chor/draw-and-drop/frame_10_delay-0.05s.png" id="15_p8pqk"]
+[ext_resource type="Texture2D" uid="uid://bth87r4vnv5g2" path="res://assets/characters/animations/chor/draw-and-drop/frame_11_delay-0.05s.png" id="16_wyix1"]
+[ext_resource type="Texture2D" uid="uid://btoghdmffa3a3" path="res://assets/characters/animations/chor/draw-and-drop/frame_12_delay-0.05s.png" id="17_0v1qf"]
+[ext_resource type="Texture2D" uid="uid://dsiepnfsl8hh5" path="res://assets/characters/animations/chor/draw-and-drop/frame_13_delay-0.05s.png" id="18_aj0xt"]
+[ext_resource type="Texture2D" uid="uid://ccxxtxt72j5rk" path="res://assets/characters/animations/chor/draw-and-drop/frame_14_delay-0.05s.png" id="19_tfb5t"]
+[ext_resource type="Texture2D" uid="uid://csfkj515qpjop" path="res://assets/characters/animations/chor/draw-and-drop/frame_15_delay-0.05s.png" id="20_tasy6"]
+[ext_resource type="Texture2D" uid="uid://cptrdgveil7c2" path="res://assets/characters/animations/chor/draw-and-drop/frame_16_delay-0.05s.png" id="21_oeqpy"]
+[ext_resource type="Texture2D" uid="uid://cl8vx52ptxnxp" path="res://assets/characters/animations/chor/draw-and-drop/frame_17_delay-0.05s.png" id="22_as0nj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ecrme"]
 animations = [{
+"frames": [{
+"duration": 0.41,
+"texture": ExtResource("5_yd0we")
+}, {
+"duration": 0.41,
+"texture": ExtResource("6_1cl3n")
+}, {
+"duration": 0.41,
+"texture": ExtResource("7_mfrop")
+}, {
+"duration": 0.41,
+"texture": ExtResource("8_4twp7")
+}, {
+"duration": 0.41,
+"texture": ExtResource("9_oe5uw")
+}, {
+"duration": 0.41,
+"texture": ExtResource("10_5ev3e")
+}, {
+"duration": 0.41,
+"texture": ExtResource("11_g6ve7")
+}, {
+"duration": 0.41,
+"texture": ExtResource("12_l5od3")
+}, {
+"duration": 0.41,
+"texture": ExtResource("13_a4ciy")
+}, {
+"duration": 0.41,
+"texture": ExtResource("14_0g2b1")
+}, {
+"duration": 0.41,
+"texture": ExtResource("15_p8pqk")
+}, {
+"duration": 0.41,
+"texture": ExtResource("16_wyix1")
+}, {
+"duration": 0.41,
+"texture": ExtResource("17_0v1qf")
+}, {
+"duration": 0.41,
+"texture": ExtResource("18_aj0xt")
+}, {
+"duration": 0.41,
+"texture": ExtResource("19_tfb5t")
+}, {
+"duration": 0.41,
+"texture": ExtResource("20_tasy6")
+}, {
+"duration": 0.41,
+"texture": ExtResource("21_oeqpy")
+}, {
+"duration": 0.41,
+"texture": ExtResource("22_as0nj")
+}],
+"loop": false,
+"name": &"draw",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("5_mxkj0")
@@ -20,6 +97,38 @@ animations = [{
 "name": &"stand",
 "speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_mxkj0"]
+resource_name = "intro"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Table:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TestScene:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6jhgv"]
+_data = {
+&"intro": SubResource("Animation_mxkj0")
+}
 
 [node name="Chor" type="Node2D"]
 script = ExtResource("1_62kxy")
@@ -44,5 +153,11 @@ animated_sprite = NodePath("../AnimatedSprite2D")
 position = Vector2(1706.9999, 616)
 scale = Vector2(0.6486854, 0.6486854)
 sprite_frames = SubResource("SpriteFrames_ecrme")
-animation = &"stand"
-frame_progress = 0.28954
+animation = &"draw"
+frame = 17
+frame_progress = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6jhgv")
+}

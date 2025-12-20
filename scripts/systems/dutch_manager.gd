@@ -50,10 +50,16 @@ func opponent_turn() -> void:
 	dutch_button.disabled = true
 	Global.reset_played_card()     
 	Global.reset_drawn_this_turn()
-	animated_sprite.play("draw")
-	await animated_sprite.animation_finished
-	$Deck.draw_card(true)
-	animated_sprite.play("stand")
+	if animated_sprite:
+		animated_sprite.play("draw")
+		await animated_sprite.animation_finished
+		if animated_sprite.sprite_frames.has_animation("drop"):
+			animated_sprite.play("drop")
+			await animated_sprite.animation_finished
+		$Deck.draw_card(true)
+		animated_sprite.play("stand")
+	else:
+		$Deck.draw_card(true)
 	battle_time.start()
 	await battle_time.timeout
 	opponent_decision()
@@ -77,9 +83,6 @@ func end_opponent_turn() -> void:
 	Global.reset_played_card()
 	Global.reset_drawn_this_turn()
 
-func format_animation(action: String) -> String:
-	return "res://assets/characters/animations/" + opponent + "/" + action + ".gif"
-	
 func declare_dutch() -> void:
 	Global.announce_dutch()
 	battle_time.stop()
@@ -110,7 +113,7 @@ func show_result(tex: Texture2D, is_victory: bool) -> void:
 	if is_victory:
 		process_victory_sequence()
 	else:
-		pass
+		process_defeat_sequence()
 	
 func process_victory_sequence() -> void:
 	if next_level_scene != "":
@@ -126,6 +129,14 @@ func process_victory_sequence() -> void:
 	else:
 		get_tree().change_scene_to_file("res://scenes/levels/menu.tscn")
 	
+func process_defeat_sequence() -> void:
+	await get_tree().create_timer(3.0).timeout
+	
+	if SaveManager.has_method("load_game_and_switch_scene"):
+		SaveManager.load_game_and_switch_scene()
+	else:
+		get_tree().reload_current_scene()
+		
 func game_over():
 	pass
 	

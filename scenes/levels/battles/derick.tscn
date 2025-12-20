@@ -1,8 +1,194 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2jf8b3meo7jx"]
+[gd_scene load_steps=41 format=3 uid="uid://d2jf8b3meo7jx"]
 
 [ext_resource type="Texture2D" uid="uid://bhb0278dxnslv" path="res://assets/background/classroom.png" id="1_h5mtp"]
 [ext_resource type="Texture2D" uid="uid://bs1h3lstxsc12" path="res://assets/background/table.png" id="2_nsaqo"]
 [ext_resource type="PackedScene" uid="uid://u8prst1obv1v" path="res://scenes/levels/test_scene.tscn" id="3_mh5fu"]
+[ext_resource type="Texture2D" uid="uid://dw8jw6k10m56n" path="res://assets/characters/animations/derick/stand/frame_0_delay-0.2s.png" id="4_afeu0"]
+[ext_resource type="Texture2D" uid="uid://cavherc4jf4nm" path="res://assets/characters/animations/derick/draw/frame_00_delay-0.2s.png" id="4_c2uov"]
+[ext_resource type="Texture2D" uid="uid://d0d8ujfxq6tnc" path="res://assets/characters/animations/derick/stand/frame_1_delay-0.2s.png" id="5_hepmy"]
+[ext_resource type="Texture2D" uid="uid://bkrlca7qg21mf" path="res://assets/characters/animations/derick/draw/frame_01_delay-0.08s.png" id="5_ysy03"]
+[ext_resource type="Texture2D" uid="uid://cqidm7iirf84k" path="res://assets/characters/animations/derick/draw/frame_02_delay-0.08s.png" id="6_2io8y"]
+[ext_resource type="Texture2D" uid="uid://ba5roby4xs1tg" path="res://assets/characters/animations/derick/draw/frame_03_delay-0.05s.png" id="7_pkhsg"]
+[ext_resource type="Texture2D" uid="uid://bmeyw88vmmygo" path="res://assets/characters/animations/derick/draw/frame_04_delay-0.05s.png" id="8_2t8qm"]
+[ext_resource type="Texture2D" uid="uid://bs0dqk83bfi1u" path="res://assets/characters/animations/derick/draw/frame_05_delay-0.05s.png" id="9_sv52p"]
+[ext_resource type="Texture2D" uid="uid://cq1r4yo6f23dq" path="res://assets/characters/animations/derick/draw/frame_06_delay-0.03s.png" id="10_adsxg"]
+[ext_resource type="Texture2D" uid="uid://c75htr367fdn2" path="res://assets/characters/animations/derick/draw/frame_07_delay-0.03s.png" id="11_mrrqs"]
+[ext_resource type="Texture2D" uid="uid://b7l2yworomawn" path="res://assets/characters/animations/derick/draw/frame_08_delay-0.05s.png" id="12_mbeqw"]
+[ext_resource type="Texture2D" uid="uid://cmvihpln5wi5e" path="res://assets/characters/animations/derick/draw/frame_09_delay-0.03s.png" id="13_ympxp"]
+[ext_resource type="Texture2D" uid="uid://ca1stx3744q4t" path="res://assets/characters/animations/derick/draw/frame_10_delay-0.03s.png" id="14_y3fcq"]
+[ext_resource type="Texture2D" uid="uid://blmcdplfkgbx4" path="res://assets/characters/animations/derick/draw/frame_11_delay-0.03s.png" id="15_f5bem"]
+[ext_resource type="Texture2D" uid="uid://sglp4db2q8wg" path="res://assets/characters/animations/derick/draw/frame_12_delay-0.1s.png" id="16_jbiv2"]
+[ext_resource type="Texture2D" uid="uid://bucshqn3ivguu" path="res://assets/characters/animations/derick/draw/frame_13_delay-0.08s.png" id="17_j1foo"]
+[ext_resource type="Texture2D" uid="uid://cyqx3yic2d3rj" path="res://assets/characters/animations/derick/draw/frame_14_delay-0.08s.png" id="18_uhym1"]
+[ext_resource type="Texture2D" uid="uid://vvt1p857gkt3" path="res://assets/characters/animations/derick/draw/frame_15_delay-0.08s.png" id="19_h7u1y"]
+[ext_resource type="Texture2D" uid="uid://csk0fppe4cy08" path="res://assets/characters/animations/derick/draw/frame_16_delay-0.08s.png" id="20_45n22"]
+[ext_resource type="Texture2D" uid="uid://pfyx1plf1s5" path="res://assets/characters/animations/derick/draw/frame_17_delay-0.08s.png" id="21_wqruy"]
+[ext_resource type="Texture2D" uid="uid://du8cmnx8baalh" path="res://assets/characters/animations/derick/draw/frame_18_delay-0.08s.png" id="22_r7uid"]
+[ext_resource type="Texture2D" uid="uid://bkybo7l7ilb4w" path="res://assets/characters/animations/derick/draw/frame_19_delay-0.08s.png" id="23_erl5v"]
+[ext_resource type="Texture2D" uid="uid://bsra51bloefhx" path="res://assets/characters/animations/derick/draw/frame_20_delay-0.08s.png" id="24_x4v2q"]
+[ext_resource type="Texture2D" uid="uid://bw1sxl33c77k5" path="res://assets/characters/animations/derick/draw/frame_21_delay-0.08s.png" id="25_x3on6"]
+[ext_resource type="Texture2D" uid="uid://crvrm6uxxsffr" path="res://assets/characters/animations/derick/draw/frame_22_delay-0.08s.png" id="26_1d1yu"]
+[ext_resource type="Texture2D" uid="uid://dgiwnk2pkjulv" path="res://assets/characters/animations/derick/draw/frame_23_delay-0.08s.png" id="27_su1eu"]
+[ext_resource type="Texture2D" uid="uid://p6jqa87hp40n" path="res://assets/characters/animations/derick/drop/frame_0_delay-0.08s.png" id="28_mbeqw"]
+[ext_resource type="Texture2D" uid="uid://dq1sefk0pcq80" path="res://assets/characters/animations/derick/drop/frame_1_delay-0.08s.png" id="29_ympxp"]
+[ext_resource type="Texture2D" uid="uid://b56wpd0a3aplk" path="res://assets/characters/animations/derick/drop/frame_2_delay-0.08s.png" id="30_y3fcq"]
+[ext_resource type="Texture2D" uid="uid://4ntwmrf2gp13" path="res://assets/characters/animations/derick/drop/frame_3_delay-0.08s.png" id="31_f5bem"]
+[ext_resource type="Texture2D" uid="uid://btx6w50qq826s" path="res://assets/characters/animations/derick/drop/frame_4_delay-0.08s.png" id="32_jbiv2"]
+[ext_resource type="Texture2D" uid="uid://cnbej20lt6yht" path="res://assets/characters/animations/derick/drop/frame_5_delay-0.08s.png" id="33_j1foo"]
+[ext_resource type="Texture2D" uid="uid://mh86lfj35isi" path="res://assets/characters/animations/derick/drop/frame_6_delay-0.08s.png" id="34_uhym1"]
+[ext_resource type="Texture2D" uid="uid://b5dchy81ktwl0" path="res://assets/characters/animations/derick/drop/frame_7_delay-0.08s.png" id="35_h7u1y"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y3w8m"]
+animations = [{
+"frames": [{
+"duration": 0.51,
+"texture": ExtResource("4_c2uov")
+}, {
+"duration": 0.51,
+"texture": ExtResource("5_ysy03")
+}, {
+"duration": 0.51,
+"texture": ExtResource("6_2io8y")
+}, {
+"duration": 0.51,
+"texture": ExtResource("7_pkhsg")
+}, {
+"duration": 0.51,
+"texture": ExtResource("8_2t8qm")
+}, {
+"duration": 0.51,
+"texture": ExtResource("9_sv52p")
+}, {
+"duration": 0.51,
+"texture": ExtResource("10_adsxg")
+}, {
+"duration": 0.51,
+"texture": ExtResource("11_mrrqs")
+}, {
+"duration": 0.51,
+"texture": ExtResource("12_mbeqw")
+}, {
+"duration": 0.51,
+"texture": ExtResource("13_ympxp")
+}, {
+"duration": 0.51,
+"texture": ExtResource("14_y3fcq")
+}, {
+"duration": 0.51,
+"texture": ExtResource("15_f5bem")
+}, {
+"duration": 0.51,
+"texture": ExtResource("16_jbiv2")
+}, {
+"duration": 0.51,
+"texture": ExtResource("17_j1foo")
+}, {
+"duration": 0.51,
+"texture": ExtResource("18_uhym1")
+}, {
+"duration": 0.51,
+"texture": ExtResource("19_h7u1y")
+}, {
+"duration": 0.51,
+"texture": ExtResource("20_45n22")
+}, {
+"duration": 0.51,
+"texture": ExtResource("21_wqruy")
+}, {
+"duration": 0.51,
+"texture": ExtResource("22_r7uid")
+}, {
+"duration": 0.51,
+"texture": ExtResource("23_erl5v")
+}, {
+"duration": 0.51,
+"texture": ExtResource("24_x4v2q")
+}, {
+"duration": 0.51,
+"texture": ExtResource("25_x3on6")
+}, {
+"duration": 0.51,
+"texture": ExtResource("26_1d1yu")
+}, {
+"duration": 0.51,
+"texture": ExtResource("27_su1eu")
+}],
+"loop": false,
+"name": &"draw",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.51,
+"texture": ExtResource("28_mbeqw")
+}, {
+"duration": 0.51,
+"texture": ExtResource("29_ympxp")
+}, {
+"duration": 0.51,
+"texture": ExtResource("30_y3fcq")
+}, {
+"duration": 0.51,
+"texture": ExtResource("31_f5bem")
+}, {
+"duration": 0.51,
+"texture": ExtResource("32_jbiv2")
+}, {
+"duration": 0.51,
+"texture": ExtResource("33_j1foo")
+}, {
+"duration": 0.51,
+"texture": ExtResource("34_uhym1")
+}, {
+"duration": 0.51,
+"texture": ExtResource("35_h7u1y")
+}],
+"loop": false,
+"name": &"drop",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.21,
+"texture": ExtResource("4_afeu0")
+}, {
+"duration": 1.21,
+"texture": ExtResource("5_hepmy")
+}],
+"loop": true,
+"name": &"stand",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_mxkj0"]
+resource_name = "intro"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Table:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TestScene:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6jhgv"]
+_data = {
+&"intro": SubResource("Animation_mxkj0")
+}
 
 [node name="Derick" type="Node2D"]
 
@@ -16,6 +202,20 @@ position = Vector2(503.98096, 497.0127)
 scale = Vector2(2.8874404, 3.3930707)
 texture = ExtResource("2_nsaqo")
 
-[node name="TestScene" parent="." instance=ExtResource("3_mh5fu")]
+[node name="TestScene" parent="." node_paths=PackedStringArray("animated_sprite") instance=ExtResource("3_mh5fu")]
 z_index = 100
 opponent = "derick"
+animated_sprite = NodePath("../AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1706.9999, 616)
+scale = Vector2(0.6486854, 0.6486854)
+sprite_frames = SubResource("SpriteFrames_y3w8m")
+animation = &"drop"
+frame = 7
+frame_progress = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6jhgv")
+}
